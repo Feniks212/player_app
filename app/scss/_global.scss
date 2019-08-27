@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   font-size: 1.33vw;
   font-size: 1rem;
@@ -11,6 +12,46 @@ body {
   }
   a:hover {
     text-decoration: none;
+  }
+
+  .player-atom {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.51),
+      inset -1px 0 2px rgba(0, 0, 0, 0.49), inset 1px 0 2px rgba(0, 0, 0, 0.49);
+      box-shadow: inset 2px 0 4px #000000, inset -2px 0 4px #000000, inset 0 -2px 4px #000000, inset 0 -2px 4px #000000;
+    border-radius: 6px;
+    background-image: radial-gradient(circle 461px at 50% 19.37%, #6f7289 0%, #393947 100%);
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(./img/bc-main.png);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 0;
+    }
+  }
+
+  .style {
+    height: 26px;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.24),
+      0 1px 1px rgba(230, 230, 255, 0.24), inset 0 1px 3px #000000;
+    border-radius: 3px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
   }
 
   footer {

@@ -1,0 +1,72 @@
+.header {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 12px 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4), inset 2px 0 4px rgba(0, 0, 0, 0.24),
+    inset -2px 0 4px rgba(0, 0, 0, 0.24),
+    inset 0 2px 4px rgba(255, 255, 255, 0.24);
+  background-image: radial-gradient(
+    circle 471px at 50% 295.79%,
+    #3b3c43 0%,
+    #2a2a2f 100%
+  );
+  border-radius: 2px 2px 0 0;
+  z-index: 1;
+  .logo {
+    flex: 0 0 27.3%;
+    img {
+      width: 100%;
+      max-width: 104px;
+    }
+  }
+  .list-music {
+    min-width: 416px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .name-music {
+      max-width: 362px;
+      width: 100%;
+      height: 22px;
+      box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.24);
+      border-radius: 2px;
+      background-image: linear-gradient(180deg, #34343b 0%, #212121 100%);
+    }
+  }
+  .setting-player {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    .save {
+      width: 26px;
+      margin-right: 35px;
+    }
+    span {
+      color: rgba(147, 150, 169, 0.8);
+      font-family: "Gotham Medium";
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: -0.03px;
+      line-height: 10px;
+      text-transform: uppercase;
+    }
+    .control {
+      width: 26px;
+      border-radius: 50%;
+      margin-left: 4px;
+      margin-right: 16px;
+    }
+    .two-button {
+      width: 50px;
+      margin-right: 16px;
+    }
+    .logo {
+      max-width: 26px;
+    }
+  }
+}
