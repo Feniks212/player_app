@@ -69,6 +69,17 @@
           .buttons-efects {
             width: 62px;
             height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1px 0;
+            .button-effects {
+              &:nth-child(odd) {
+                margin-right: 2px;
+              }
+              
+            }
           }
         }
         .select-in {

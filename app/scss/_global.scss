@@ -96,9 +96,24 @@ body {
     }
     &.active {
       &:after {
-        box-shadow: 0 0 2px #db2235, inset 0 -1px 4px #a409ad, inset 0 0 3px #db2235;
-background-image: radial-gradient(5px 5px at 100% 290%, #ff818e 0%, #db2235 100%);
+        box-shadow: 0 0 2px #db2235, inset 0 -1px 4px #a409ad,
+          inset 0 0 3px #db2235;
+        background-image: radial-gradient(
+          5px 5px at 100% 290%,
+          #ff818e 0%,
+          #db2235 100%
+        );
       }
+      &:before {
+        position: absolute;
+        content: "";
+        top: 2px;
+        left: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 4px 2px #db2235;
+    }
     }
   }
   .switch,
@@ -113,10 +128,14 @@ background-image: radial-gradient(5px 5px at 100% 290%, #ff818e 0%, #db2235 100%
     height: 30px;
   }
 
-  .button {
+  .button,
+  .button-effects {
     display: block;
     width: 22px;
     height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5),
       inset -1px 0 0 rgba(230, 230, 255, 0.06),
       inset 1px 0 0 rgba(230, 230, 255, 0.06), inset 0 -1px 0 #2b2b31,
@@ -124,8 +143,80 @@ background-image: radial-gradient(5px 5px at 100% 290%, #ff818e 0%, #db2235 100%
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.12);
     background-image: linear-gradient(180deg, #3b3c43 0%, #2a2a2f 100%);
-  }
 
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.on {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+      background-image: linear-gradient(180deg, #2a2a2f 0%, #1c1c20 100%);
+    }
+  }
+  .button-effects {
+    position: relative;
+    width: 28px;
+    height: 22px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.5),
+      inset -1px 0 0 rgba(230, 230, 255, 0.06),
+      inset 1px 0 0 rgba(230, 230, 255, 0.06), inset 0 -1px 0 #2b2b31,
+      inset 0 1px 0 #585962;
+
+    &.sin {
+      &:before {
+        background-image: url(./img/Sin.svg);
+      }
+      &.on {
+        &:before {
+          background-image: url(./img/Sin-on.svg);
+        }
+      }
+    }
+    &.pulse {
+      &:before {
+        background-image: url(./img/Pulse.svg);
+      }
+      &.on {
+        &:before {
+          background-image: url(./img/Pulse-on.svg);
+        }
+      }
+    }
+    &.saw {
+      &:before {
+        background-image: url(./img/Saw.svg);
+      }
+      &.on {
+        &:before {
+          background-image: url(./img/Saw-on.svg);
+        }
+      }
+    }
+    &.square {
+      &:before {
+        background-image: url(./img/Square.svg);
+      }
+      &.on {
+        &:before {
+          background-image: url(./img/Square-on.svg);
+        }
+      }
+    }
+    &.noise {
+      &:before {
+        background-image: url(./img/Noise.svg);
+      }
+      &.on {
+        &:before {
+          background-image: url(./img/Noise-on.svg);
+        }
+      }
+    }
+  }
   .slider {
     position: absolute;
     display: flex;
