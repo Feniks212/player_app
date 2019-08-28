@@ -94,8 +94,15 @@ body {
       );
       opacity: 0.8;
     }
+    &.active {
+      &:after {
+        box-shadow: 0 0 2px #db2235, inset 0 -1px 4px #a409ad, inset 0 0 3px #db2235;
+background-image: radial-gradient(5px 5px at 100% 290%, #ff818e 0%, #db2235 100%);
+      }
+    }
   }
-  .switch, .switch-vertical {
+  .switch,
+  .switch-vertical {
     width: 30px;
     height: 18px;
     margin-left: 12px;
@@ -104,6 +111,76 @@ body {
   .switch-vertical {
     width: 18px;
     height: 30px;
+  }
+
+  .button {
+    display: block;
+    width: 22px;
+    height: 22px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5),
+      inset -1px 0 0 rgba(230, 230, 255, 0.06),
+      inset 1px 0 0 rgba(230, 230, 255, 0.06), inset 0 -1px 0 #2b2b31,
+      inset 0 1px 0 #585962;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.12);
+    background-image: linear-gradient(180deg, #3b3c43 0%, #2a2a2f 100%);
+  }
+
+  .slider {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: calc(50% - 12px);
+    width: 24px;
+    height: 15px;
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.24), 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    background-image: linear-gradient(180deg, #727280 0%, #323238 100%);
+    z-index: 2;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 5px;
+      border-radius: 2px;
+      background-image: linear-gradient(180deg, #38383e 0%, #5c5c68 100%);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
+      width: 22px;
+      height: 5px;
+      border-radius: 2px;
+      background-image: linear-gradient(
+        180deg,
+        rgba(25, 25, 28, 0.7) 0%,
+        #565662 100%
+      );
+    }
+    span {
+      position: absolute;
+      width: 20px;
+      height: 5px;
+      border-radius: 1px;
+      background-image: linear-gradient(to top, #3e3e48 0%, #46464f 100%);
+      &:before {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        width: 20px;
+        height: 2px;
+        box-shadow: 0 0 1px #db2235, inset 0 0 1px #db2235;
+        border-radius: 1px;
+        background-color: #ffffff;
+      }
+    }
   }
   .small-control,
   .medium-control,
