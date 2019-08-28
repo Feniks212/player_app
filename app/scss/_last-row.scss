@@ -1,0 +1,31 @@
+.last-row {
+  position: relative;
+  padding: 0 11px;
+  z-index: 1;
+  .last-row__panel {
+    position: relative;
+    width: 100%;
+    height: 116px;
+    border-radius: 4px 4px 56px 56px;
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.5),
+      inset 2px 0 1px rgba(0, 0, 0, 0.5), inset -2px 0 1px rgba(0, 0, 0, 0.5),
+      inset 0 2px 1px rgba(230, 230, 255, 0.12);
+    border-radius: 4px 4px 56px 56px;
+    background-image: radial-gradient(
+      circle 465px at 51.17% 230.63%,
+      #4f4f60 0%,
+      #34353e 100%
+    );
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 0 1px 2px rgba(230, 230, 255, 0.24);
+      border-radius: 4px 4px 56px 56px;
+      opacity: 0.5;
+    }
+  }
+}
