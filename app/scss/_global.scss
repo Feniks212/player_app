@@ -66,6 +66,11 @@ body {
       rgba(0, 0, 0, 0.8) 100%
     );
   }
+  .style-for-control {
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.24),
+      0 1px 1px rgba(230, 230, 255, 0.24), inset 0 1px 2px #000000;
+    background-image: linear-gradient(180deg, #1f1f23 0%, #0b0b0d 100%);
+  }
   .act-panel {
     position: relative;
     width: 14px;
@@ -90,7 +95,18 @@ body {
       opacity: 0.8;
     }
   }
+  .switch, .switch-vertical {
+    width: 30px;
+    height: 18px;
+    margin-left: 12px;
+    border-radius: 12px;
+  }
+  .switch-vertical {
+    width: 18px;
+    height: 30px;
+  }
   .small-control,
+  .medium-control,
   .big-control,
   .very-big-control {
     display: flex;
@@ -103,6 +119,10 @@ body {
   .small-control {
     width: 26px;
     height: 26px;
+  }
+  .medium-control {
+    width: 38px;
+    height: 38px;
   }
   .very-big-control {
     width: 60px;

@@ -2,22 +2,42 @@
   position: relative;
   padding: 0 11px;
   z-index: 1;
+
+  .head {
+    position: relative;
+    padding: 8px 12px 6px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      box-shadow: 0 1px 2px rgba(230, 230, 255, 0.24),
+        0 -1px 2px rgba(0, 0, 0, 0.24);
+      background-color: rgba(0, 0, 0, 0.24);
+    }
+  }
+
   .last-row__panel {
     position: relative;
     width: 100%;
-    height: 116px;
+    display: flex;
     border-radius: 4px 4px 56px 56px;
     box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.5),
       inset 2px 0 1px rgba(0, 0, 0, 0.5), inset -2px 0 1px rgba(0, 0, 0, 0.5),
       inset 0 2px 1px rgba(230, 230, 255, 0.12);
-    border-radius: 4px 4px 56px 56px;
     background-image: radial-gradient(
       circle 465px at 51.17% 230.63%,
       #4f4f60 0%,
       #34353e 100%
     );
+    // overflow: hidden;
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -26,6 +46,123 @@
       box-shadow: inset 0 1px 2px rgba(230, 230, 255, 0.24);
       border-radius: 4px 4px 56px 56px;
       opacity: 0.5;
+    }
+    > div {
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1px;
+        height: calc(100% - 2px);
+        box-shadow: 2px 0 1px rgba(0, 0, 0, 0.5), -2px 0 1px rgba(0, 0, 0, 0.5);
+        background-color: #000000;
+        opacity: 0.5;
+      }
+      &:last-child::after {
+        display: none;
+      }
+      .content {
+        padding: 18px 10px 10px;
+      }
+    }
+
+    .voising {
+      min-width: 141px;
+      width: 100%;
+      .row {
+        &:first-child {
+          margin-bottom: 5px;
+        }
+        &:last-child {
+          justify-content: flex-end;
+        }
+      }
+      .medium-control {
+        margin-right: 15px;
+      }
+      .switch-vertical {
+        margin-left: 0;
+        margin-right: 22px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .select-in {
+        width: 62px;
+        height: 20px;
+      }
+    }
+    .distortion {
+      min-width: 123px;
+      width: 100%;
+      .content {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .row {
+        &:first-child {
+          justify-content: space-between;
+        }
+      }
+    }
+    .filter {
+      min-width: 155px;
+      width: 100%;
+      .row {
+        &:first-child {
+          margin-bottom: 5px;
+          justify-content: space-between;
+        }
+        &:last-child {
+          .select-in {
+            width: 130px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .delay {
+      min-width: 278px;
+      width: 100%;
+      .row {
+        &:first-child {
+          margin-bottom: 5px;
+          justify-content: space-between;
+        }
+        &:last-child {
+          justify-content: space-between;
+          .left, .right {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .select-in {
+            width: 34px;
+            height: 20px;
+            &:first-child {
+              margin-right: 10px;
+            }
+          }
+          .switch {
+            &:first-child {
+              margin-right: 48px;
+            }
+          }
+        }
+      }
+    }
+    .reverb {
+      min-width: 237px;
+      width: 100%;
+      .row {
+        &:first-child {
+          margin-bottom: 5px;
+          justify-content: space-between;
+        }
+        &:last-child {
+        }
+      }
     }
   }
 }
