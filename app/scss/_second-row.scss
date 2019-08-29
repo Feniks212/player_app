@@ -19,7 +19,7 @@
 
     .osc-1,
     .osc-2,
-    .osc-3{
+    .osc-3 {
       position: relative;
       min-width: 311px;
       max-width: 311px;
@@ -81,6 +81,35 @@
               width: 62px;
               height: 20px;
               margin-right: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 0 2px;
+              .numbers {
+                position: relative;
+                width: 36px;
+                height: 16px;
+                font-size: 11px;
+                line-height: 16px;
+                color: #fff;
+                text-align: center;
+                &:after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.24);
+                  border-radius: 1px;
+                  background-image: linear-gradient(
+                    180deg,
+                    #34343b 0%,
+                    #212121 100%
+                  );
+                  opacity: 0.4;
+                }
+              }
             }
             .big-control {
               margin-right: 11px;
@@ -125,7 +154,7 @@
         }
       }
     }
-    .osc-3{
+    .osc-3 {
       &:after {
         display: none;
       }

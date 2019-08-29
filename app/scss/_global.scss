@@ -79,7 +79,7 @@ body {
     box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.24),
       0 1px 1px rgba(230, 230, 255, 0.12), inset 0 1px 1px rgba(0, 0, 0, 0.5);
     background-image: linear-gradient(180deg, #1e1e1e 0%, #030303 100%);
-    &:after {
+    &:before {
       position: absolute;
       content: "";
       top: 2px;
@@ -95,7 +95,7 @@ body {
       opacity: 0.8;
     }
     &.active {
-      &:after {
+      &:before {
         box-shadow: 0 0 2px #db2235, inset 0 -1px 4px #a409ad,
           inset 0 0 3px #db2235;
         background-image: radial-gradient(
@@ -103,8 +103,9 @@ body {
           #ff818e 0%,
           #db2235 100%
         );
+        opacity: 1;
       }
-      &:before {
+      &:after {
         position: absolute;
         content: "";
         top: 2px;
@@ -113,19 +114,76 @@ body {
         height: 10px;
         border-radius: 50%;
         box-shadow: 0 0 4px 2px #db2235;
-    }
+      }
     }
   }
   .switch,
   .switch-vertical {
+    position: relative;
     width: 30px;
     height: 18px;
     margin-left: 12px;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+      content: "";
+      display: block;
+      width: 26px;
+      height: 14px;
+      box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.24);
+      border-radius: 12px;
+      background-image: linear-gradient(180deg, #383940 0%, #151517 100%);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5), 0 4px 4px rgba(0, 0, 0, 0.24),
+        inset 0 1px 2px rgba(101, 103, 115, 0.56),
+        inset 0 1px 0 rgba(228, 228, 255, 0.24);
+      background-image: radial-gradient(
+        circle 10px at 108.33% 58.33%,
+        #6d6f7e 0%,
+        #252529 100%
+      );
+    }
+    &.active {
+      &:before {
+        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 12px #db2235,
+          inset 0 0 10px #db2235, inset 0 0 3px #db2235, inset 0 0 2px #db2235,
+          0 0 5px 1px #db2235;
+        border-radius: 12px;
+        background-image: linear-gradient(180deg, #da224c 0%, #a409ad 100%);
+      }
+      &:after {
+        left: inherit;
+        right: 3px;
+      }
+    }
   }
   .switch-vertical {
     width: 18px;
     height: 30px;
+    &:before {
+      width: 14px;
+      height: 26px;
+    }
+    &:after {
+      left: inherit;
+      bottom: 3px;
+    }
+    &.active {
+      &:after {
+        top: inherit;
+        top: 3px;
+      }
+    }
   }
 
   .button,
@@ -155,6 +213,17 @@ body {
     &.on {
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
       background-image: linear-gradient(180deg, #2a2a2f 0%, #1c1c20 100%);
+    }
+    &.for-number {
+      width: 20px;
+      height: 16px;
+      &:before {
+        background-image: url(./img/arrows.svg);
+      }
+    }
+    &.filters {
+      width: 30px;
+      height: 16px;
     }
   }
   .button-effects {
