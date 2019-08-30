@@ -67,7 +67,16 @@
         padding: 18px 10px 10px;
       }
     }
-
+    .decoration {
+      display: block;
+      position: relative;
+      width: 15px;
+      height: 14px;
+      background-image: url(./img/decoration.svg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
     .voising {
       min-width: 141px;
       width: 100%;
@@ -86,7 +95,7 @@
               position: relative;
               width: 36px;
               height: 16px;
-              font-size: 11px;
+              font-size: 10px;
               line-height: 16px;
               color: #fff;
               text-align: center;
@@ -129,12 +138,30 @@
       min-width: 123px;
       width: 100%;
       .content {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 0;
+        padding-right: 0;
       }
       .row {
         &:first-child {
+          padding-left: 16px;
+          padding-right: 16px;
           justify-content: space-between;
+          margin-bottom: 4px;
+        }
+        &:nth-child(even) {
+          justify-content: space-between;
+          padding-left: 6px;
+          padding-right: 6px;
+          margin-bottom: -3px;
+        }
+        &:last-child {
+          justify-content: center;
+          padding-left: 6px;
+          padding-right: 6px;
+          margin-bottom: -3px;
+          .decoration {
+            margin: 0 0.5px;
+          }
         }
       }
     }
@@ -154,6 +181,22 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            .button.filters {
+              color: #fff;
+              font-size: 9px;
+              &.on {
+                i {
+                  opacity: 1;
+                  text-shadow: 0 0 3px #fff;
+                }
+              }
+              i {
+                opacity: 0.6;
+              }
+              &:before {
+                display: none;
+              }
+            }
           }
         }
       }
@@ -190,10 +233,10 @@
             height: 16px;
             line-height: 16px;
             color: #fff;
-            font-size: 10px;
+            font-size: 9px;
             text-align: center;
             &:after {
-              content: '';
+              content: "";
               position: absolute;
               left: 0;
               top: 0;
@@ -201,7 +244,11 @@
               height: 100%;
               box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.24);
               border-radius: 1px;
-              background-image: linear-gradient(180deg, #34343b 0%, #212121 100%);
+              background-image: linear-gradient(
+                180deg,
+                #34343b 0%,
+                #212121 100%
+              );
               opacity: 0.4;
             }
           }
@@ -218,10 +265,22 @@
       width: 100%;
       .row {
         &:first-child {
-          margin-bottom: 5px;
+          margin-bottom: 4px;
           justify-content: space-between;
         }
+        &:nth-child(even) {
+          justify-content: flex-start;
+          padding: 0;
+          margin-bottom: -3px;
+        }
         &:last-child {
+          justify-content: flex-start;
+          padding-left: 8px;
+          padding-right: 0;
+          margin-bottom: -3px;
+          .decoration {
+            margin: 0;
+          }
         }
       }
     }

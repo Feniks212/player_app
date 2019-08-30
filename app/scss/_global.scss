@@ -8,12 +8,19 @@ body {
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Gotham", sans-serif;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
   }
   *,
   ::after,
   ::before {
     box-sizing: border-box;
+  }
+  i {
+    opacity: 0.7;
   }
   a:hover {
     text-decoration: none;
@@ -356,6 +363,7 @@ body {
   .small-control {
     width: 26px;
     height: 26px;
+    z-index: 2;
   }
   .medium-control {
     width: 38px;
@@ -367,8 +375,8 @@ body {
   }
   .round-butn {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;

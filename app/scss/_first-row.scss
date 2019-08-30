@@ -14,7 +14,7 @@
   .content {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 10px;
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5),
@@ -54,6 +54,54 @@
       box-shadow: 0px -2px 4px 4px rgba(0, 0, 0, 0.5);
     }
   }
+  .select-in {
+    max-width: 104px;
+    height: 20px;
+    padding: 0 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .select {
+      position: relative;
+      display: flex;
+      width: 96px;
+      height: 16px;
+      box-shadow: inset 0 -1px 5px rgba(0, 0, 0, 0.24),
+        inset 0 0 1px rgba(0, 0, 0, 0.5);
+      border-radius: 2px;
+      background-image: linear-gradient(180deg, #1e1e1e 0%, #030303 100%);
+      padding-left: 4px;
+      i {
+        color: #fff;
+        font-size: 9px;
+        text-transform: capitalize;
+        line-height: 16px;
+        opacity: 0.8;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        border: 2.5px solid transparent;
+        border-top: 2.3px solid #fff;
+      }
+    }
+
+    .light {
+      display: flex;
+      width: 2px;
+      height: 17px;
+      border-radius: 1px;
+      background-color: #000000;
+    }
+    &.active {
+      .light {
+        box-shadow: 0 0 4px #db2235, inset 0 0 1px #db2235;
+        background-color: #ffa5ae;
+      }
+    }
+  }
   .left-panel {
     .lfo-1,
     .lfo-2 {
@@ -64,7 +112,7 @@
         z-index: 1;
         .up {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           margin-bottom: 8px;
           .buttons-efects {
             width: 62px;
@@ -78,22 +126,30 @@
               &:nth-child(odd) {
                 margin-right: 2px;
               }
-              
             }
           }
-        }
-        .select-in {
-          max-width: 104px;
-          height: 20px;
+          .sync {
+            margin-left: 12px;
+            text-align: center;
+            .switch {
+              margin-top: 8px;
+              margin-left: 0;
+            }
+          }
         }
       }
       .right {
         display: flex;
         z-index: 1;
+        .rate {
+          text-align: center;
+        }
+        .intensity {
+          text-align: center;
+          margin-left: 10px;
+        }
         .big-control {
-          &:last-child {
-            margin-left: 10px;
-          }
+          margin-top: 8px;
         }
       }
     }
@@ -188,6 +244,9 @@
             width: 85px;
             height: 20px;
             margin-left: -7px;
+            .select {
+              padding-left: 7px;
+            }
           }
         }
       }
