@@ -64,7 +64,13 @@
         display: none;
       }
       .content {
-        padding: 18px 10px 10px;
+        padding: 5px 10px 10px;
+      }
+    }
+    .wrapper {
+      margin: 0;
+      .medium-control {
+        margin-top: 8px;
       }
     }
     .decoration {
@@ -83,9 +89,33 @@
       .row {
         &:first-child {
           margin-bottom: 5px;
+          .wrapper {
+            margin: 0;
+            margin-right: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &:first-child {
+              margin-right: 15px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+            .switch-vertical, .medium-control {
+              margin: 0;
+              margin-top: 8px;
+            }
+          }
         }
         &:last-child {
           justify-content: flex-end;
+          .wrapper {
+            display: flex;
+            align-items: center;
+             i {
+               margin-right: 8px;
+             }
+          }
           .select-in {
             display: flex;
             align-items: center;
@@ -119,16 +149,7 @@
           }
         }
       }
-      .medium-control {
-        margin-right: 15px;
-      }
-      .switch-vertical {
-        margin-left: 0;
-        margin-right: 22px;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
+      
       .select-in {
         width: 62px;
         height: 20px;
@@ -211,6 +232,19 @@
         }
         &:last-child {
           justify-content: space-between;
+          .wrapper {
+            display: flex;
+            align-items: center;
+            &:first-child {
+              margin-right: 20px;
+            }
+            i {
+              margin-right: 5px;
+            }
+            .switch {
+              margin: 0;
+            }
+          }
           .left,
           .right {
             display: flex;
@@ -250,11 +284,6 @@
                 #212121 100%
               );
               opacity: 0.4;
-            }
-          }
-          .switch {
-            &:first-child {
-              margin-right: 48px;
             }
           }
         }

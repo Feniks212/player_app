@@ -16,8 +16,15 @@
   );
   border-radius: 2px 2px 0 0;
   z-index: 1;
+  @media (max-width: 950px) {
+    padding: 0 12px;
+    justify-content: space-between;
+  }
   .logo {
     flex: 0 0 27.3%;
+    @media (max-width: 950px) {
+      flex: inherit;
+    }
     img {
       width: 100%;
       max-width: 104px;
@@ -29,6 +36,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+     @media (max-width: 650px) {
+      min-width: calc(100% - 155px);
+    }
     .name-music {
       max-width: 362px;
       width: 100%;
@@ -53,12 +63,25 @@
     display: flex;
     align-items: center;
     margin-left: 15px;
+    flex-wrap: wrap;
+    @media (max-width: 950px) {
+      margin-left: 0;
+      width: 104px;
+      justify-content: flex-end;
+    }
+    @media (max-width: 650px) {
+      width: fit-content;
+    }
+    
     .save {
       width: 26px;
       margin-right: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
+      @media (max-width: 950px) {
+        display: none;
+      }
       .save__a {
         &::before {
           background-image: url(./img/save.svg);
@@ -72,10 +95,16 @@
       letter-spacing: -0.03px;
       line-height: 10px;
       text-transform: uppercase;
+      @media (max-width: 950px) {
+        display: none;
+      }
     }
     .small-control {
       margin-left: 4px;
       margin-right: 16px;
+      @media (max-width: 950px) {
+        display: none;
+      }
     }
     .two-button {
       width: 50px;
@@ -83,6 +112,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media (max-width: 950px) {
+        display: none;
+      }
       .button {
         &:first-child {
           margin-right: 2px;
@@ -101,6 +133,11 @@
     }
     .logo {
       max-width: 26px;
+      min-width: 26px;
+      flex: inherit;
+      img {
+        max-width: 26px;
+      }
     }
   }
 }

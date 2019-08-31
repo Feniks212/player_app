@@ -51,19 +51,23 @@
           background-color: rgba(0, 0, 0, 0.54);
         }
       }
+      .wrapper {
+        margin-left: 0;
+      }
       .content {
         position: relative;
-        padding: 23px 10px 10px;
+        padding: 7px 10px 10px;
         .up {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-bottom: 12px;
+          margin-bottom: 9px;
           .left-buttons {
             width: 28px;
             height: 132px;
             display: flex;
             padding: 2px 0;
+            margin-top: 8px;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
@@ -74,13 +78,34 @@
             }
           }
           .right-control {
-            .very-big-control {
-              margin-right: 12px;
+            .row {
+              &:first-child, &:last-child {
+                .wrapper {
+                  margin-right: 11px;
+                  &:first-child {
+                    margin-right: 12px;
+                  }
+                  &:last-child {
+                    margin-right: 0;
+                  }
+                  .very-big-control, .big-control {
+                    margin-top: 7px;
+                    margin-bottom: 4px;
+                  }
+                }
+              }
+              &:last-child {
+                .wrapper {
+                  &:first-child {
+                    margin-right: 10px;
+                  }
+                }
+              }
             }
             .select-in {
               width: 62px;
               height: 20px;
-              margin-right: 10px;
+              margin-top: 8px;
               display: flex;
               align-items: center;
               justify-content: space-between;
@@ -137,7 +162,7 @@
           .down__in {
             height: 100%;
             display: flex;
-            padding: 30px 15px 12px;
+            padding: 11px 15px 12px;
             justify-content: space-between;
             align-items: flex-end;
             box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.4),
@@ -150,6 +175,11 @@
               rgba(42, 42, 47, 0.97) 0%,
               #1e1f24 100%
             );
+            .wrapper {
+              .big-control {
+                margin-top: 8px;
+              }
+            }
           }
         }
       }

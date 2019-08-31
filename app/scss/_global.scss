@@ -10,7 +10,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: "Gotham", sans-serif;
     color: #fff;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
     text-transform: uppercase;
   }
@@ -28,6 +28,14 @@ body {
   .row {
     display: flex;
     flex-wrap: wrap;
+  }
+  .wrapper {
+    margin-left: 12px;
+    text-align: center;
+    .switch {
+      margin-top: 8px;
+      margin-left: 0;
+    }
   }
   .player-atom {
     position: relative;
@@ -443,4 +451,18 @@ body {
   footer {
     margin-top: auto;
   }
+}
+
+
+@media (max-width: 950px) {
+  .left-panel, .right-panel, .second-row, .last-row {
+    display: none;
+  }
+  .first-row {
+    .central-screen {
+      width: 100%;
+      min-height: 400px;
+    }
+  }
+
 }
