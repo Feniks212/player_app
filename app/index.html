@@ -37,8 +37,13 @@
               
               <ul>
                 <li>
-                  <a href="#" data-test="1" class="audio play" name="./audio/angels__dance.mp3"
-                    >First song</a
+                  <a href="#" data-test="0" class="audio disabled" name=""
+                    >OPEN</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-test="1" class="audio" name="./audio/angels__dance.mp3"
+                    >[PAD] Cool Organic</a
                   >
                 </li>
                 <li>
@@ -48,17 +53,17 @@
                 </li>
                 <li>
                   <a href="#" data-test="3" class="audio" name="./audio/angels__dance.mp3"
-                    >Third Name</a
+                    >Third song</a
                   >
                 </li>
                 <li>
                   <a href="#" data-test="4" class="audio" name="./audio/angels__dance.mp3"
-                    >Fourth Name</a
+                    >Fourth song</a
                   >
                 </li>
                 <li>
                   <a href="#" data-test="5" class="audio" name="./audio/angels__dance.mp3"
-                    >Fifth Name</a
+                    >Fifth song</a
                   >
                 </li>
               </ul>
@@ -72,7 +77,8 @@
           </div>
           <span>master<br />volume</span>
           <div class="small-control style">
-            <span class="round-butn"></span>
+            <span class="round-butn" id="round-butn-1"></span>
+            <span class="shadow"></span>
           </div>
           <div class="two-button style">
             <span class="button settings"></span>
@@ -93,23 +99,23 @@
           <div class="lfo-1">
             <div class="head">
               <img src="./img/LFO_1.svg" alt="" />
-              <span class="act-panel active"></span>
+              <span class="act-panel"></span>
             </div>
             <div class="content">
               <div class="left">
                 <div class="up">
                   <div class="buttons-efects style">
-                    <span class="button-effects on sin"> </span>
+                    <span class="button-effects sin"> </span>
                     <span class="button-effects pulse"></span>
                     <span class="button-effects saw"></span>
                     <span class="button-effects square"></span>
                   </div>
                   <div class="wrapper">
                     <i>Sync</i>
-                    <div class="switch active style"></div>
+                    <div class="switch style"></div>
                   </div>
                 </div>
-                <div class="select-in active style">
+                <div class="select-in style">
                   <span class="select"><i>None</i></span>
                   <span class="light"></span>
                 </div>
@@ -119,12 +125,14 @@
                   <i>Rate</i>
                   <div class="big-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Intensity</i>
                   <div class="big-control style-for-control ">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
@@ -139,14 +147,14 @@
               <div class="left">
                 <div class="up">
                   <div class="buttons-efects style">
-                    <span class="button-effects on sin"> </span>
+                    <span class="button-effects sin"> </span>
                     <span class="button-effects pulse"></span>
                     <span class="button-effects saw"></span>
                     <span class="button-effects square"></span>
                   </div>
                   <div class="wrapper">
                     <i>Sync</i>
-                    <span class="switch active style"></span>
+                    <span class="switch style"></span>
                   </div>
                 </div>
                 <div class="select-in style">
@@ -159,12 +167,14 @@
                   <i>Rate</i>
                   <div class="big-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Intensity</i>
                   <div class="big-control style-for-control ">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
@@ -192,7 +202,7 @@
                   <i>A</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider">
+                    <div class="slider" id="env-1-slider-1">
                       <span></span>
                     </div>
                   </div>
@@ -201,7 +211,7 @@
                   <i>D</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 15%">
+                    <div class="slider" id="env-1-slider-2">
                       <span></span>
                     </div>
                   </div>
@@ -210,7 +220,7 @@
                   <i>S</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 55%">
+                    <div class="slider" id="env-1-slider-3">
                       <span></span>
                     </div>
                   </div>
@@ -219,7 +229,7 @@
                   <i>R</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 25%">
+                    <div class="slider" id="env-1-slider-4">
                       <span></span>
                     </div>
                   </div>
@@ -229,15 +239,7 @@
                 <div class="bundle">
                   <div class="small-control style">
                     <span class="round-butn"></span>
-                  </div>
-                  <div class="select-in active style">
-                    <span class="select"><i>Filter Cutoff</i></span>
-                    <span class="light"></span>
-                  </div>
-                </div>
-                <div class="bundle">
-                  <div class="small-control style">
-                    <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                   <div class="select-in style">
                     <span class="select"><i>None</i></span>
@@ -247,6 +249,17 @@
                 <div class="bundle">
                   <div class="small-control style">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
+                  </div>
+                  <div class="select-in style">
+                    <span class="select"><i>None</i></span>
+                    <span class="light"></span>
+                  </div>
+                </div>
+                <div class="bundle">
+                  <div class="small-control style">
+                    <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                   <div class="select-in style">
                     <span class="select"><i>None</i></span>
@@ -267,7 +280,7 @@
                   <i>A</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider">
+                    <div class="slider" id="env-2-slider-1">
                       <span></span>
                     </div>
                   </div>
@@ -276,7 +289,7 @@
                   <i>D</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 15%">
+                    <div class="slider" id="env-2-slider-2">
                       <span></span>
                     </div>
                   </div>
@@ -285,7 +298,7 @@
                   <i>S</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 55%">
+                    <div class="slider" id="env-2-slider-3">
                       <span></span>
                     </div>
                   </div>
@@ -294,7 +307,7 @@
                   <i>R</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" style="top: 25%">
+                    <div class="slider" id="env-2-slider-4">
                       <span></span>
                     </div>
                   </div>
@@ -304,6 +317,7 @@
                 <div class="bundle">
                   <div class="small-control style">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                   <div class="select-in style">
                     <span class="select"><i>None</i></span>
@@ -313,6 +327,7 @@
                 <div class="bundle">
                   <div class="small-control style">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                   <div class="select-in style">
                     <span class="select"><i>None</i></span>
@@ -322,6 +337,7 @@
                 <div class="bundle">
                   <div class="small-control style">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                   <div class="select-in style">
                     <span class="select"><i>None</i></span>
@@ -347,7 +363,7 @@
                 <div class="wrapper">
                   <i>Type</i>
                   <div class="left-buttons style">
-                    <span class="button-effects on sin"> </span>
+                    <span class="button-effects sin"> </span>
                     <span class="button-effects pulse"></span>
                     <span class="button-effects saw"></span>
                     <span class="button-effects square"></span>
@@ -360,25 +376,29 @@
                     <div class="wrapper">
                       <i>Volume</i>
                       <div class="very-big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-1"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Pitch</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-2"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Fine tune</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-3"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Hi-cut</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-4"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -386,26 +406,29 @@
                     <div class="wrapper">
                       <i>Voices</i>
                       <div class="select-in style">
-                        <span class="numbers">2</span>
+                        <span class="numbers">0</span>
                         <div class="button for-number"></div>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Detune</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-5"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Stereo</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-6"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>LO-cut</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn"></span>
+                        <span class="round-butn" id="osc-1-round-butn-7"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -416,25 +439,29 @@
                   <div class="wrapper">
                     <i>Attack</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn"></span>
+                      <span class="round-butn" id="osc-1-round-butn-down-1"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Decay</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn"></span>
+                      <span class="round-butn" id="osc-1-round-butn-down-2"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Sustain</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn"></span>
+                      <span class="round-butn" id="osc-1-round-butn-down-3"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Release</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn"></span>
+                      <span class="round-butn" id="osc-1-round-butn-down-4"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                 </div>
@@ -465,24 +492,28 @@
                       <i>Volume</i>
                       <div class="very-big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Pitch</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Fine tune</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Hi-cut</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -498,18 +529,21 @@
                       <i>Detune</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Stereo</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>LO-cut</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -521,24 +555,28 @@
                     <i>Attack</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Decay</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Sustain</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Release</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                 </div>
@@ -569,24 +607,28 @@
                       <i>Volume</i>
                       <div class="very-big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Pitch</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Fine tune</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Hi-cut</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -602,18 +644,21 @@
                       <i>Detune</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Stereo</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>LO-cut</i>
                       <div class="big-control style-for-control">
                         <span class="round-butn"></span>
+                        <span class="shadow"></span>
                       </div>
                     </div>
                   </div>
@@ -625,24 +670,28 @@
                     <i>Attack</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Decay</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Sustain</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Release</i>
                     <div class="big-control style-for-control">
                       <span class="round-butn"></span>
+                      <span class="shadow"></span>
                     </div>
                   </div>
                 </div>
@@ -665,6 +714,7 @@
                   <i>Glide</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
@@ -698,12 +748,14 @@
                   <i>Amount</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Drive</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
@@ -737,18 +789,21 @@
                   <i>Cutoff</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Res</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Drive</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
@@ -775,36 +830,42 @@
                   <i>Time L</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Time R</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>AMNT</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Decay</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Lo-cut</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Hi-cut</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
@@ -841,30 +902,35 @@
                   <i>Amount</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Size</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Decay</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Lo-cut</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
                 <div class="wrapper">
                   <i>Hi-cut</i>
                   <div class="medium-control style-for-control">
                     <span class="round-butn"></span>
+                    <span class="shadow"></span>
                   </div>
                 </div>
               </div>
