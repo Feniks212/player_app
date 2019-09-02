@@ -20,6 +20,7 @@ body {
     box-sizing: border-box;
   }
   i {
+    height: fit-content;
     opacity: 0.7;
   }
   a:hover {
@@ -166,6 +167,7 @@ body {
     &:after {
       content: "";
       position: absolute;
+      top: 3px;
       left: 3px;
       display: block;
       width: 12px;
@@ -203,6 +205,7 @@ body {
     }
     &:after {
       left: inherit;
+      top: inherit;
       bottom: 3px;
     }
     &.active {
@@ -426,6 +429,7 @@ body {
       content: "";
       position: absolute;
       top: 0;
+      left: calc(50% - 1px);
       width: 2px;
       height: 3px;
       box-shadow: 0 0 4px #db2235, inset 0 0 1px #db2235, inset 0 0 1px #db2235;
