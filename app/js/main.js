@@ -8,7 +8,7 @@ $(document).ready(function() {
     $(".hide").show();
   });
 
-  var audio = new Audio(); // Создаём новый элемент Audio
+  var audio = new Audio(); // Create a new item Audio
   $(".audio").click(function() {
     $(".audio").removeClass("play");
     audio.src = this.name;
@@ -22,31 +22,57 @@ $(document).ready(function() {
 
   var audios = $(".audio");
   var Current = 0;
-  var text = [];
+  var arrayAhref = [];
   for (let i = 0; i < audios.length; i++) {
-    text.push(audios[i]);
+    arrayAhref.push(audios[i]);
   }
-  document.getElementById("text-audio").innerHTML = text[Current].textContent;
+  document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
 
   $(".button.prev").click(function() {
     if (Current == 0) {
-      Current = text.length - 1;
+      Current = arrayAhref.length - 1;
     } else {
       Current--;
     }
     $(".audio").removeClass("play");
-    document.getElementById("text-audio").innerHTML = text[Current].textContent;
-    text[Current].className += " play";
+    document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
+    arrayAhref[Current].className += " play";
+    audio.src = arrayAhref[Current].name;
+    audio.play();
   });
 
   $(".button.next").click(function() {
-    if (Current == text.length - 1) {
+    if (Current == arrayAhref.length - 1) {
       Current = 0;
     } else {
       Current++;
     }
     $(".audio").removeClass("play");
-    document.getElementById("text-audio").innerHTML = text[Current].textContent;
-    text[Current].className += " play";
+    document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
+    arrayAhref[Current].className += " play";
+    audio.src = arrayAhref[Current].name;
+    audio.play();
   });
+
+//   arrayAhref.forEach(function(elem){
+//       if(elem Class = 'play'){
+//         var bla = elem.getAttribute('data-test');
+
+//         switch(bla){
+//             case '1':
+//                 console.log('richazhki pominyat na 1 positioning');
+//             break;
+
+//             case '2':
+//                 console.log('richazhki pominyat na 2 positioning');
+//             break;
+
+//             case '3':
+//                 console.log('richazhki pominyat na 3 positioning');
+//             break;
+//         }
+//       }
+//   })
+
 });
+
