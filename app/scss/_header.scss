@@ -81,16 +81,13 @@
             text-decoration: none;
             background-color: #2a2a2f;
             outline: none;
-            &:hover, &.play {
-              background-color: #3b3c43;
-              span {
-                color: #ad2550;
-              }
-            }
-            span {
-              color: #fff;
+            color: #fff;
               font-size: 10px;
               opacity: 0.7;
+            &:hover, &.play {
+              background-color: #3b3c43;
+              color: #ad2550;
+              opacity: 1;
             }
           }
         }

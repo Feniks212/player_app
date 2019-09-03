@@ -423,6 +423,7 @@ body {
       #252529 100%
     );
     border-radius: 50%;
+    transition: ease .4s;
     &:before {
       content: "";
       width: 18px;

@@ -23,10 +23,14 @@ $(document).ready(function() {
   var audios = $(".audio");
   var Current = 0;
   var arrayAhref = [];
+  // var arrayData = [];
   for (let i = 0; i < audios.length; i++) {
     arrayAhref.push(audios[i]);
+    // arrayData.push(audios[i].getAttribute('data-test'));
   }
-  document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
+
+  document.getElementById("text-audio").innerHTML =
+    arrayAhref[Current].textContent;
 
   $(".button.prev").click(function() {
     if (Current == 0) {
@@ -35,7 +39,8 @@ $(document).ready(function() {
       Current--;
     }
     $(".audio").removeClass("play");
-    document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
+    document.getElementById("text-audio").innerHTML =
+      arrayAhref[Current].textContent;
     arrayAhref[Current].className += " play";
     audio.src = arrayAhref[Current].name;
     audio.play();
@@ -48,31 +53,58 @@ $(document).ready(function() {
       Current++;
     }
     $(".audio").removeClass("play");
-    document.getElementById("text-audio").innerHTML = arrayAhref[Current].textContent;
+    document.getElementById("text-audio").innerHTML =
+      arrayAhref[Current].textContent;
     arrayAhref[Current].className += " play";
     audio.src = arrayAhref[Current].name;
     audio.play();
   });
 
-//   arrayAhref.forEach(function(elem){
-//       if(elem Class = 'play'){
-//         var bla = elem.getAttribute('data-test');
+  arrayAhref.forEach(function(elem) {
+    elem.addEventListener("click", function(event) {
+      var target = event.target;
 
-//         switch(bla){
-//             case '1':
-//                 console.log('richazhki pominyat na 1 positioning');
-//             break;
+      if (target.classList.contains("play")) {
+        var dataTest = target.getAttribute("data-test");
+      } else {
+        console.log("sory");
+      }
 
-//             case '2':
-//                 console.log('richazhki pominyat na 2 positioning');
-//             break;
+      switch (dataTest) {
+        case "1":
+          var roundButn = $(".round-butn");
+          roundButn.css({
+            transform: "rotate(150deg)"
+          });
 
-//             case '3':
-//                 console.log('richazhki pominyat na 3 positioning');
-//             break;
-//         }
-//       }
-//   })
-
+          break;
+        case "2":
+          var roundButn = $(".round-butn");
+          roundButn.css({
+            transform: "rotate(50deg)"
+          });
+          break;
+        case "3":
+          var roundButn = $(".round-butn");
+          roundButn.css({
+            transform: "rotate(30deg)"
+          });
+          break;
+        case "4":
+          var roundButn = $(".round-butn");
+          roundButn.css({
+            transform: "rotate(99deg)"
+          });
+          break;
+        case "5":
+          var roundButn = $(".round-butn");
+          roundButn.css({
+            transform: "rotate(130deg)"
+          });
+          break;
+        default:
+          console.log("Error");
+      }
+    });
+  });
 });
-
