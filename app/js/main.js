@@ -97,11 +97,106 @@ console.log($(".slider"));
 function switchtest(varEl) {
   switch (varEl) {
     case "1":
-      changeHu(
+      changeRoundButn(
         "rotate(35deg)",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "rotate(-35deg)",
+        "",
+        "",
+        "rotate(150deg)",
+        "rotate(220deg)",
+        "rotate(220deg)",
+        "rotate(220deg)",
+        "rotate(-50deg)",
+        "rotate(220deg)",
+        "rotate(140deg)",
+        "rotate(50deg)",
+        "rotate(-50deg)",
+        "rotate(45deg)",
+        "",
+        "rotate(-90deg)",
+        "rotate(-100deg)",
+        "rotate(150deg)",
+        "rotate(-120deg)",
+        "rotate(-55deg)",
+        "rotate(-35deg)",
+        "rotate(135deg)",
+        "rotate(45deg)",
+        "",
+        "",
+        "",
+        "rotate(145deg)",
+        "rotate(-30deg)",
+        "rotate(145deg)",
+        "rotate(-145deg)",
+        "rotate(-85deg)",
+        "rotate(220deg)",
+        "rotate(160deg)",
+        "rotate(-60deg)",
+        "rotate(85deg)",
+        "rotate(-110deg)",
+        "rotate(-90deg)",
+        "rotate(160deg)",
+        "rotate(-160deg)",
+        "rotate(-160deg)",
+        "rotate(100deg)",
+        "rotate(100deg)",
+        "rotate(-160deg)",
+        "rotate(-110deg)",
+        "rotate(-100deg)",
+        "rotate(160deg)",
+        "rotate(-50deg)",
+        "rotate(160deg)",
+        "",
+        "rotate(-160deg)",
+        "rotate(-40deg)"
+      );
+
+      changeActPanel(
+        "",
+        "",
         "active",
+        "",
+        "active",
+        "active",
+        "",
+        "active",
+        "",
+        "",
+        "active"
+      );
+      changeButtonEffects(
         "on",
-        "active",
+        "",
+        "",
+        "",
+        "on",
+        "",
+        "",
+        "",
+        "on",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "on",
+        "",
+        "",
+        "on"
+      );
+      changeSwitch("active", "active", "", "active");
+      changeSliders(
         "65%",
         "calc(100% - 15px)",
         "0",
@@ -112,96 +207,112 @@ function switchtest(varEl) {
         "55%"
       );
 
-      // Osc1ActPanel.addClass("active");
-      // Osc1ButtonEffectsSin.addClass("on");
-
-      // Osc1roundButn1.css({
-      //   transform: "rotate(-35deg)"
-      // });
-      // Osc1roundButn4.css({
-      //   transform: "rotate(150deg)"
-      // });
       // Osc1Numbers[0].innerText = "1";
 
-      // Osc1roundButn5.css({
-      //   transform: "rotate(220deg)"
-      // });
-      // Osc1roundButn6.css({
-      //   transform: "rotate(220deg)"
-      // });
-      // Osc1roundButn7.css({
-      //   transform: "rotate(220deg)"
-      // });
-
-      // Osc1roundButnDown1.css({
-      //   transform: "rotate(-50deg)"
-      // });
-      // Osc1roundButnDown2.css({
-      //   transform: "rotate(220deg)"
-      // });
-      // Osc1roundButnDown3.css({
-      //   transform: "rotate(140deg)"
-      // });
-      // Osc1roundButnDown4.css({
-      //   transform: "rotate(50deg)"
-      // });
 
       break;
     case "2":
-      changeHu();
+      changeRoundButn();
+      changeActPanel();
+      changeButtonEffects();
+      changeSwitch();
+      changeSliders();
       break;
     case "3":
-      changeHu();
+      changeRoundButn();
+      changeActPanel();
+      changeButtonEffects();
+      changeSwitch();
+      changeSliders();
       break;
     case "4":
-      changeHu();
+      changeRoundButn();
+      changeActPanel();
+      changeButtonEffects();
+      changeSwitch();
+      changeSliders();
       break;
     case "5":
-      changeHu();
+      changeRoundButn();
+      changeActPanel();
+      changeButtonEffects();
+      changeSwitch();
+      changeSliders();
       break;
     default:
       console.log("Error");
   }
 }
 
-function changeHu(var0,
-var1,
-var2,
-var3,
-var4,
-var5,
-var6,
-var7,
-var8,
-var9,
-var10,) {
+function changeRoundButn() {
   // Remove
   $(".round-butn").removeAttr("style");
-  // $(".act-panel").removeClass("active");
-  // $(".button-effects").removeClass("on");
-  // $(".switch").removeClass("active");
+  //
   // $(".switch-vertical").removeClass("active");
   // $(".slider").removeAttr("style");
 
   // Add
-  var RoundButns = $(".round-butn");
-  for (let i = 0; i < 11; i++) {
-    var x = "var" + i;
-    var httt = $(".round-butn")[i].style.transform = x;
-    
-    console.log(var0);
+  var roundButns = $(".round-butn");
+  for (let i = 0; i < roundButns.length; i++) {
+    $(".round-butn")[i].style.transform = arguments[i];
   }
-
-  // $(".round-butn")[0].style.transform = var1;
-  // $(".act-panel")[2].classList.add(var2);
-  // $(".button-effects")[0].classList.add(var3);
-  // $(".switch")[0].classList.add(var4);
-  // $(".slider")[0].style.top = var5;
-  // $(".slider")[1].style.top = var6;
-  // $(".slider")[2].style.top = var7;
-  // $(".slider")[3].style.top = var8;
-  // $(".slider")[4].style.top = var9;
-  // $(".slider")[5].style.top = var10;
-  // $(".slider")[6].style.top = var11;
-  // $(".slider")[7].style.top = var12;
 }
+function changeActPanel() {
+  // Remove
+  $(".act-panel").removeClass("active");
+  //Add
+  var actPanels = $(".act-panel");
+  for (let i = 0; i < actPanels.length; i++) {
+    if (arguments[i] != "") {
+      $(".act-panel")[i].classList.add(arguments[i]);
+    } else {
+      $(".act-panel")[i].classList.remove("active");
+    }
+  }
+}
+function changeButtonEffects() {
+  $(".button-effects").removeClass("on");
+
+  var buttonEffects = $(".button-effects");
+  for (let i = 0; i < buttonEffects.length; i++) {
+    if (arguments[i] != "") {
+      $(".button-effects")[i].classList.add(arguments[i]);
+    } else {
+      $(".button-effects")[i].classList.remove("on");
+    }
+  }
+}
+
+function changeSwitch() {
+  $(".switch").removeClass("active");
+
+  var switchs = $(".switch");
+  for (let i = 0; i < switchs.length; i++) {
+    if (arguments[i] != "") {
+      $(".switch")[i].classList.add(arguments[i]);
+    } else {
+      $(".switch")[i].classList.remove("active");
+    }
+  }
+}
+
+function changeSliders() {
+  $(".slider").removeAttr("style");
+
+  var sliders = $(".slider");
+  for (let i = 0; i < sliders.length; i++) {
+    $(".slider")[i].style.top = arguments[i];
+  }
+}
+
+// $(".act-panel")[2].classList.add(var2);
+// $(".button-effects")[0].classList.add(var3);
+// $(".switch")[0].classList.add(var4);
+// $(".slider")[0].style.top = var5;
+// $(".slider")[1].style.top = var6;
+// $(".slider")[2].style.top = var7;
+// $(".slider")[3].style.top = var8;
+// $(".slider")[4].style.top = var9;
+// $(".slider")[5].style.top = var10;
+// $(".slider")[6].style.top = var11;
+// $(".slider")[7].style.top = var12;
