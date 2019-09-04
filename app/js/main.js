@@ -232,13 +232,6 @@ function switchtest(varEl) {
       changeSwitch();
       changeSliders();
       break;
-    case "5":
-      changeRoundButn();
-      changeActPanel();
-      changeButtonEffects();
-      changeSwitch();
-      changeSliders();
-      break;
     default:
       console.log("Error");
   }
@@ -304,15 +297,3 @@ function changeSliders() {
     $(".slider")[i].style.top = arguments[i];
   }
 }
-
-// $(".act-panel")[2].classList.add(var2);
-// $(".button-effects")[0].classList.add(var3);
-// $(".switch")[0].classList.add(var4);
-// $(".slider")[0].style.top = var5;
-// $(".slider")[1].style.top = var6;
-// $(".slider")[2].style.top = var7;
-// $(".slider")[3].style.top = var8;
-// $(".slider")[4].style.top = var9;
-// $(".slider")[5].style.top = var10;
-// $(".slider")[6].style.top = var11;
-// $(".slider")[7].style.top = var12;
