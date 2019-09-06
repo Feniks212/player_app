@@ -1,126 +1,182 @@
+"use strict";
+
+const objectMain = new Object();
+
+objectMain.roundButns = $(".round-butn");
+objectMain.actPanels = $(".act-panel");
+objectMain.buttonEffects = $(".button-effects");
+objectMain.changeButtonFilters = $(".filters");
+objectMain.switchs = $(".switch");
+objectMain.switchVertical = $(".switch-vertical");
+objectMain.sliders = $(".slider");
+
+let roundButns = objectMain.roundButns; // find all items "round-butn"
+let actPanels = objectMain.actPanels; // find all items "act-panel"
+let buttonEffects = objectMain.buttonEffects; // find all items "button-effects"
+let changeButtonFilters = objectMain.changeButtonFilters; // find all items "filters"
+let switchs = objectMain.switchs; // find all items "switch"
+let switchVertical = objectMain.switchVertical; // find all items "switch-vertical"
+let sliders = objectMain.sliders; // find all items "slider"
+
 $(document).ready(function() {
+  // function to open a block with a list of audio
   $(".hide").click(function() {
     $(".list-audio").hide();
     $(".hide").hide();
   });
   $("#open-audio").click(function() {
-    $(".list-audio").show();
+    $(".list-audio").show(); // to open
     $(".hide").show();
   });
 
-  var audios = $(".audio");
-  var Current = 0;
-  var arrayAhref = [];
+  let audios = $(".audio"); // find all items "audio"
+  let videos = $(".video"); // find all items "video"
+  let Current = 0; // procedure
+  let arrayAudio = []; // this is array element "a.audio"
+  let arrayVideos = []; // this is array element "video"
 
-  var audio = new Audio(); // Create a new item Audio
+  let audio = new Audio(); // Create a new item Audio
+
+  // function launch music and change the text in the panel
   $(".audio").click(function() {
     $(".audio").removeClass("play");
+    $(".video").removeClass("play");
     audio.src = this.name;
     audio.play();
 
     $(this).addClass("play");
 
-    var textAudioName = document.getElementById("text-audio");
+    let textAudioName = document.getElementById("text-audio"); //text in the panel
 
     textAudioName.textContent = this.childNodes[0].textContent;
-    Current = this.dataset.test;
-    
+    Current = this.dataset.audio;
   });
 
   for (let i = 0; i < audios.length; i++) {
-    arrayAhref.push(audios[i]);
+    arrayAudio.push(audios[i]); // find all items "a.audio"
   }
 
-  // document.getElementById("text-audio").innerHTML = arrayAhref[0].textContent;
+  for (let i = 0; i < videos.length; i++) {
+    arrayVideos.push(videos[i]); // find all items "video"
+  }
 
+  let arraybutton = []; // this is array element "button prev" and "button next"
+  let button = $(".list-music .button");
+  for (let i = 0; i < button.length; i++) {
+    arraybutton.push(button[i]); // find all items ".list-music .button"
+  }
+  // document.getElementById("text-audio").innerHTML = arrayAudio[0].textContent;
+
+  // function click "button prev"
   $(".button.prev").click(function() {
     if (Current == 1 || Current == 0) {
-      Current = arrayAhref.length - 1;
+      Current = arrayAudio.length - 1;
     } else {
       Current--;
     }
     $(".audio").removeClass("play");
+    $(".video").removeClass("play");
     document.getElementById("text-audio").innerHTML =
-      arrayAhref[Current].textContent;
-    arrayAhref[Current].className += " play";
-    audio.src = arrayAhref[Current].name;
+      arrayAudio[Current].textContent;
+    arrayAudio[Current].className += " play";
+    arrayVideos[Current].className += " play";
+    audio.src = arrayAudio[Current].name;
     audio.play();
   });
 
+  // function click "button next"
   $(".button.next").click(function() {
-    if (Current == arrayAhref.length - 1) {
+    if (Current == arrayAudio.length - 1) {
       Current = 1;
     } else {
       Current++;
     }
     $(".audio").removeClass("play");
+    $(".video").removeClass("play");
     document.getElementById("text-audio").innerHTML =
-      arrayAhref[Current].textContent;
-    arrayAhref[Current].className += " play";
-    audio.src = arrayAhref[Current].name;
+      arrayAudio[Current].textContent;
+    arrayAudio[Current].className += " play";
+    arrayVideos[Current].className += " play";
+    audio.src = arrayAudio[Current].name;
     audio.play();
   });
 
-  var arraybutton = [];
-  var button = $(".list-music .button");
-  for (let i = 0; i < button.length; i++) {
-    arraybutton.push(button[i]);
-  }
-
+  //iterate over all the elements from the "arraybutton"
   arraybutton.forEach(function(elem) {
+    //check which button is pressed
     elem.addEventListener("click", function(event) {
-      var target = event.target;
+      let target = event.target;
       if (target) {
-        var dataTest = $(".audio.play")[0].dataset.test;
+        let dataButton = $(".audio.play")[0].dataset.audio;
+        arrayVideos.forEach(function(elem) {
+          if (elem.classList.contains("play")) {
+            elem.play();
+          } else {
+            elem.pause();
+            elem.currentTime = "0";
+          }
+        });
+        switchFunction(dataButton);
       }
-      switchtest(dataTest);
     });
   });
 
-  arrayAhref.forEach(function(elem) {
+  //iterate over all the elements from the "arrayAudio"
+  arrayAudio.forEach(function(elem) {
+    //check which button is pressed
     elem.addEventListener("click", function(event) {
-      var target = event.target;
+      let target = event.target;
       if (target.classList.contains("play")) {
-        var dataTest = target.getAttribute("data-test");
+        // find out which element the class belongs to "play" and say what attribute it has
+        let dataAudio = target.getAttribute("data-audio");
+        arrayVideos.forEach(function(elem) {
+          let dataVideo = elem.getAttribute("data-video");
+          if (dataAudio == dataVideo) {
+            elem.classList.add("play");
+            elem.play();
+          } else {
+            elem.pause();
+            elem.currentTime = "0";
+          }
+        });
+        switchFunction(dataAudio);
       } else {
         console.log("sory");
       }
-      switchtest(dataTest);
     });
   });
 });
 
-console.log($(".slider"));
-
-function switchtest(varEl) {
-  switch (varEl) {
-    case "1":
+// function switch, which sets the properties for each audio
+function switchFunction(dateElement) {
+  switch (dateElement) {
+    case "1": // if the audion and video has a date attribute of "1"
       changeRoundButn(
         "rotate(35deg)",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
         "rotate(-35deg)",
-        "",
-        "",
+        "rotate(15deg)",
+        "rotate(-65deg)",
+        "rotate(25deg)",
+        "rotate(55deg)",
+        "rotate(80deg)",
+        "rotate(-55deg)",
+        "rotate(100deg)",
+        "rotate(95deg)",
+        "rotate(15deg)",
+        "rotate(-35deg)",
+        "rotate(-35deg)",
+        "rotate(-55deg)",
         "rotate(150deg)",
-        "rotate(220deg)",
-        "rotate(220deg)",
-        "rotate(220deg)",
+        "rotate(-140deg)",
+        "rotate(-140deg)",
+        "rotate(-140deg)",
         "rotate(-50deg)",
-        "rotate(220deg)",
+        "rotate(-140deg)",
         "rotate(140deg)",
         "rotate(50deg)",
         "rotate(-50deg)",
         "rotate(45deg)",
-        "",
+        "rotate(-35deg)",
         "rotate(-90deg)",
         "rotate(-100deg)",
         "rotate(150deg)",
@@ -129,9 +185,9 @@ function switchtest(varEl) {
         "rotate(-35deg)",
         "rotate(135deg)",
         "rotate(45deg)",
-        "",
-        "",
-        "",
+        "rotate(-35deg)",
+        "rotate(-35deg)",
+        "rotate(-35deg)",
         "rotate(145deg)",
         "rotate(-30deg)",
         "rotate(145deg)",
@@ -154,7 +210,7 @@ function switchtest(varEl) {
         "rotate(160deg)",
         "rotate(-50deg)",
         "rotate(160deg)",
-        "",
+        "rotate(-75deg)",
         "rotate(-160deg)",
         "rotate(-40deg)"
       );
@@ -194,7 +250,7 @@ function switchtest(varEl) {
         "on"
       );
       changeSwitch("active", "active", "", "active");
-      changeSwitchVartical();
+      changeSwitchlettical();
       changeSliders(
         "65%",
         "calc(100% - 15px)",
@@ -206,60 +262,57 @@ function switchtest(varEl) {
         "55%"
       );
       changeButtonFilter("on", "", "", "");
-
-      // Osc1Numbers[0].innerText = "1";
-
       break;
-    case "2":
+    case "2": // if the audion and video has a date attribute of "2"
       changeRoundButn(
+        "rotate(55deg)",
+        "rotate(55deg)",
+        "rotate(-55deg)",
+        "rotate(55deg)",
+        "rotate(55deg)",
+        "rotate(55deg)",
+        "rotate(25deg)",
+        "rotate(35deg)",
+        "rotate(45deg)",
+        "rotate(55deg)",
         "rotate(75deg)",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "rotate(55deg)",
+        "rotate(-90deg)",
         "rotate(-55deg)",
-        "",
-        "",
-        "rotate(150deg)",
-        "rotate(-220deg)",
-        "rotate(-220deg)",
-        "rotate(-220deg)",
-        "rotate(50deg)",
-        "rotate(220deg)",
-        "rotate(140deg)",
-        "rotate(-50deg)",
-        "rotate(50deg)",
-        "rotate(45deg)",
-        "",
-        "rotate(90deg)",
-        "rotate(100deg)",
-        "rotate(150deg)",
+        "rotate(-40deg)",
+        "rotate(-140deg)",
+        "rotate(35deg)",
+        "rotate(-140deg)",
+        "rotate(-130deg)",
+        "rotate(-140deg)",
+        "rotate(80deg)",
+        "rotate(-60deg)",
+        "rotate(-45deg)",
+        "rotate(-145deg)",
+        "rotate(35deg)",
+        "rotate(-90deg)",
+        "rotate(-140deg)",
+        "rotate(-140deg)",
+        "rotate(-140deg)",
         "rotate(-120deg)",
-        "rotate(-55deg)",
+        "rotate(-135deg)",
         "rotate(-35deg)",
-        "rotate(135deg)",
-        "rotate(45deg)",
-        "",
-        "",
-        "",
+        "rotate(-45deg)",
+        "rotate(55deg)",
+        "rotate(55deg)",
+        "rotate(55deg)",
         "rotate(145deg)",
-        "rotate(30deg)",
+        "rotate(-30deg)",
         "rotate(145deg)",
-        "rotate(145deg)",
+        "rotate(-145deg)",
         "rotate(-85deg)",
-        "rotate(-220deg)",
+        "rotate(220deg)",
         "rotate(160deg)",
         "rotate(-60deg)",
-        "rotate(85deg)",
-        "rotate(110deg)",
-        "rotate(-90deg)",
-        "rotate(160deg)",
+        "rotate(-155deg)",
+        "rotate(-80deg)",
+        "rotate(-130deg)",
+        "rotate(-95deg)",
         "rotate(-160deg)",
         "rotate(-160deg)",
         "rotate(100deg)",
@@ -270,175 +323,62 @@ function switchtest(varEl) {
         "rotate(160deg)",
         "rotate(-50deg)",
         "rotate(160deg)",
-        "",
-        "rotate(160deg)",
-        "rotate(40deg)"
+        "rotate(-55deg)",
+        "rotate(-160deg)",
+        "rotate(-40deg)"
       );
 
       changeActPanel(
         "",
+        "",
+        "active",
+        "",
         "active",
         "active",
         "",
-        "",
-        "",
-        "",
-        "",
         "active",
         "active",
+        "",
         ""
       );
       changeButtonEffects(
-        "",
-        "",
         "on",
-        "on",
+        "",
         "",
         "",
         "on",
         "",
         "",
-        "on",
         "",
         "",
         "on",
         "",
+        "",
+        "",
+        "on",
         "",
         "",
         "",
         "",
         "on"
       );
-      changeSwitch("", "active", "", "active");
-      changeSwitchVartical();
+      changeSwitch("active", "active", "", "active");
+      changeSwitchlettical("active");
       changeSliders(
-        "55%",
-        "calc(100% - 15px)",
-        "10%",
         "35%",
+        "calc(50% - 15px)",
+        "15%",
         "55%",
-        "calc(100% - 15px)",
-        "10%",
-        "35%"
-      );
-      changeButtonFilter("", "on", "on", "");
-      break;
-    case "3":
-      changeRoundButn(
-        "rotate(75deg)",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "rotate(-55deg)",
-        "",
-        "",
-        "rotate(150deg)",
-        "rotate(220deg)",
-        "rotate(-220deg)",
-        "rotate(-220deg)",
-        "rotate(50deg)",
-        "rotate(220deg)",
-        "rotate(-140deg)",
-        "rotate(-50deg)",
-        "rotate(50deg)",
-        "rotate(45deg)",
-        "",
-        "rotate(-90deg)",
-        "rotate(100deg)",
-        "rotate(150deg)",
-        "rotate(-120deg)",
-        "rotate(-55deg)",
-        "rotate(35deg)",
-        "rotate(-135deg)",
-        "rotate(45deg)",
-        "",
-        "",
-        "",
-        "rotate(-145deg)",
-        "rotate(30deg)",
-        "rotate(-145deg)",
-        "rotate(145deg)",
-        "rotate(-85deg)",
-        "rotate(220deg)",
-        "rotate(160deg)",
-        "rotate(60deg)",
-        "rotate(-85deg)",
-        "rotate(110deg)",
-        "rotate(90deg)",
-        "rotate(-160deg)",
-        "rotate(160deg)",
-        "rotate(160deg)",
-        "rotate(-100deg)",
-        "rotate(-100deg)",
-        "rotate(160deg)",
-        "rotate(-110deg)",
-        "rotate(-100deg)",
-        "rotate(160deg)",
-        "rotate(50deg)",
-        "rotate(160deg)",
-        "",
-        "rotate(160deg)",
-        "rotate(40deg)"
-      );
-
-      changeActPanel(
-        "",
-        "active",
-        "",
-        "",
-        "",
-        "",
-        "active",
-        "",
-        "active",
-        "",
-        ""
-      );
-      changeButtonEffects(
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        ""
-      );
-      changeSwitch("active", "", "", "active");
-      changeSwitchVartical();
-      changeSliders(
-        "55%",
-        "calc(80% - 15px)",
-        "20%",
         "35%",
-        "55%",
-        "calc(70% - 15px)",
+        "calc(60% - 15px)",
         "0",
         "45%"
       );
-      changeButtonFilter("", "", "", "on");
+      changeButtonFilter("", "", "on", "");
       break;
-    case "4":
+    case "3": // if the audion and video has a date attribute of "3"
       changeRoundButn(
-        "rotate(75deg)",
+        "rotate(-5deg)",
         "",
         "",
         "",
@@ -449,80 +389,73 @@ function switchtest(varEl) {
         "",
         "",
         "",
-        "rotate(155deg)",
+        "rotate(65deg)",
+        "rotate(-90deg)",
         "",
-        "",
-        "rotate(150deg)",
-        "rotate(220deg)",
-        "rotate(-220deg)",
-        "rotate(220deg)",
-        "rotate(50deg)",
-        "rotate(220deg)",
-        "rotate(140deg)",
-        "rotate(-50deg)",
+        "rotate(-10deg)",
+        "rotate(-140deg)",
+        "rotate(-130deg)",
+        "rotate(-140deg)",
+        "rotate(-130deg)",
+        "rotate(-40deg)",
+        "rotate(-85deg)",
         "rotate(50deg)",
         "rotate(45deg)",
+        "rotate(45deg)",
         "",
-        "rotate(90deg)",
-        "rotate(-100deg)",
-        "rotate(150deg)",
-        "rotate(120deg)",
-        "rotate(-55deg)",
-        "rotate(35deg)",
-        "rotate(135deg)",
-        "rotate(-45deg)",
+        "rotate(145deg)",
+        "rotate(-140deg)",
+        "rotate(-140deg)",
+        "rotate(-80deg)",
+        "rotate(-140deg)",
+        "rotate(-135deg)",
+        "rotate(-140deg)",
+        "rotate(-105deg)",
         "",
         "",
         "",
+        "rotate(145deg)",
+        "rotate(-30deg)",
+        "rotate(145deg)",
         "rotate(-145deg)",
-        "rotate(30deg)",
-        "rotate(145deg)",
-        "rotate(145deg)",
         "rotate(-85deg)",
         "rotate(220deg)",
+        "rotate(160deg)",
+        "rotate(-60deg)",
+        "rotate(-5deg)",
+        "rotate(0deg)",
+        "rotate(-90deg)",
+        "rotate(-100deg)",
+        "rotate(0deg)",
+        "rotate(-30deg)",
+        "rotate(100deg)",
+        "rotate(100deg)",
         "rotate(-160deg)",
-        "rotate(60deg)",
-        "rotate(85deg)",
         "rotate(-110deg)",
-        "rotate(90deg)",
+        "rotate(-100deg)",
         "rotate(160deg)",
-        "rotate(-160deg)",
-        "rotate(160deg)",
-        "rotate(100deg)",
-        "rotate(100deg)",
-        "rotate(-160deg)",
-        "rotate(110deg)",
-        "rotate(100deg)",
-        "rotate(-160deg)",
         "rotate(-50deg)",
-        "rotate(-160deg)",
-        "",
         "rotate(160deg)",
-        "rotate(40deg)"
+        "",
+        "rotate(-160deg)",
+        "rotate(-40deg)"
       );
 
       changeActPanel(
         "",
-        "active",
         "",
         "active",
         "",
-        "",
-        "",
-        "",
+        "active",
+        "active",
         "",
         "active",
+        "active",
+        "",
         ""
       );
       changeButtonEffects(
-        "",
-        "",
         "on",
-        "",
-        "",
-        "on",
-        "",
-        "",
         "",
         "",
         "",
@@ -530,86 +463,99 @@ function switchtest(varEl) {
         "",
         "",
         "",
+        "on",
+        "",
+        "",
+        "",
+        "",
         "",
         "on",
         "",
-        ""
+        "",
+        "",
+        "on"
       );
-      changeSwitch("active", "", "active", "");
-      changeSwitchVartical("active");
+      changeSwitch("active", "active", "", "active");
+      changeSwitchlettical("active");
       changeSliders(
-        "15%",
-        "calc(80% - 15px)",
-        "60%",
-        "55%",
-        "15%",
-        "calc(70% - 15px)",
+        "65%",
+        "calc(100% - 15px)",
         "0",
-        "75%"
+        "55%",
+        "65%",
+        "calc(20% - 15px)",
+        "55%",
+        "15%"
       );
-      changeButtonFilter("on", "", "", "on");
+      changeButtonFilter("on", "", "", "");
       break;
     default:
       console.log("Error");
   }
 }
 
+// function for all elements "RoundButn" in HTML
 function changeRoundButn() {
-  // Remove
+  // Remove all attribute
   $(".round-butn").removeAttr("style");
-  // Add
-  var roundButns = $(".round-butn");
-  mainСycle(roundButns, arguments);
+  // Add properties
+  mainСycle(roundButns, arguments); // function start "mainСycle"
 }
 
 function changeActPanel() {
-  // Remove
+  // Remove all classes
   $(".act-panel").removeClass("active");
-  //Add
-  var actPanels = $(".act-panel");
-  mainСycle(actPanels, arguments);
+  //Add properties
+  mainСycle(actPanels, arguments); // function start "mainСycle"
 }
 
 function changeButtonEffects() {
+  // Remove all classes
   $(".button-effects").removeClass("on");
-  var buttonEffects = $(".button-effects");
-  mainСycle(buttonEffects, arguments);
+  //Add properties
+  mainСycle(buttonEffects, arguments); // function start "mainСycle"
 }
+
 function changeButtonFilter() {
+  // Remove all classes
   $(".filters").removeClass("on");
-  var changeButtonFilter = $(".filters");
-  mainСycle(changeButtonFilter, arguments);
+  //Add properties
+  mainСycle(changeButtonFilters, arguments); // function start "mainСycle"
 }
 
 function changeSwitch() {
+  // Remove all classes
   $(".switch").removeClass("active");
-  var switchs = $(".switch");
-  mainСycle(switchs, arguments);
+  //Add properties
+  mainСycle(switchs, arguments); // function start "mainСycle"
 }
 
-function changeSwitchVartical() {
+function changeSwitchlettical() {
+  // Remove all classes
   $(".switch-vertical").removeClass("active");
-  var switchVertical = $(".switch-vertical");
-  mainСycle(switchVertical, arguments);
+  //Add properties
+  mainСycle(switchVertical, arguments); // function start "mainСycle"
 }
 
 function changeSliders() {
+  // Remove all attribute
   $(".slider").removeAttr("style");
-  var sliders = $(".slider");
-  mainСycle(sliders, arguments);
+  //Add properties
+  mainСycle(sliders, arguments); // function start "mainСycle"
 }
 
-function mainСycle(elem, x) {
+//function to check which element to apply properties
+function mainСycle(elem, properties) {
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].classList.contains("round-butn")) {
-      elem[i].style.transform = x[i];
+      elem[i].style.transform = properties[i];
     } else if (
       elem[i].classList.contains("act-panel") ||
       elem[i].classList.contains("switch") ||
       elem[i].classList.contains("switch-vertical")
     ) {
-      if (x[i] != "") {
-        elem[i].classList.add(x[i]);
+      if (properties[i] != "") {
+        elem[i].classList.add(properties[i]);
       } else {
         elem[i].classList.remove("active");
       }
@@ -617,13 +563,13 @@ function mainСycle(elem, x) {
       elem[i].classList.contains("button-effects") ||
       elem[i].classList.contains("filters")
     ) {
-      if (x[i] != "") {
-        elem[i].classList.add(x[i]);
+      if (properties[i] != "") {
+        elem[i].classList.add(properties[i]);
       } else {
         elem[i].classList.remove("on");
       }
     } else if (elem[i].classList.contains("slider")) {
-      elem[i].style.top = x[i];
+      elem[i].style.top = properties[i];
     } else {
       console.log("error");
     }

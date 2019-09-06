@@ -79,7 +79,7 @@
         opacity: 0.8;
       }
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         right: 5px;
         top: 7px;
@@ -151,18 +151,67 @@
     .head {
       justify-content: center;
     }
-    .video {
+    .videos {
       width: 414px;
       height: 100%;
       max-height: 232px;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24),
-        inset 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0px -1px 3px 3px rgba(0, 0, 0, 0.39), inset 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.7);
       border-radius: 4px;
       border: 4px solid rgba(0, 0, 0, 0.5);
-      background-color: #000000;
+      
       @media (max-width: 950px) {
         width: 100%;
         min-height: calc(100% - 29px);
+      }
+      .content-v {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        &:before {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 100%;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5),
+            inset 0 1px 4px rgba(230, 230, 255, 0.24),
+            inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+          border-radius: 1px;
+          border: 2px solid rgba(0, 0, 0, 0.83);
+          background-image: radial-gradient(
+            circle 220px at 51.72% 3.18%,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.32) 100%
+          );
+        }
+        &:after {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 1px;
+          background-color: rgba(0, 0, 0, 0.70);
+          z-index: -1;
+        }
+        video {
+          width: 100%;
+          z-index: 1;
+          display: none;
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+          &.video.disabled {
+            display: none;
+          }
+          &.play {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+            height: 100%;
+          }
+        }
       }
     }
   }

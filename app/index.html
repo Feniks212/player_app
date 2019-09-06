@@ -34,31 +34,23 @@
           <div id="open-audio" class="name-music">
             <span id="text-audio">Open</span>
             <div class="list-audio">
-              
               <ul>
                 <li>
-                  <a href="#" data-test="0" class="audio disabled" name=""
-                    ></a
-                  >
+                  <a href="#" data-audio="0" class="audio disabled" name=""></a>
                 </li>
                 <li>
-                  <a href="#" data-test="1" class="audio" name="./audio/1.mp3"
+                  <a href="#" data-audio="1" class="audio" name="./audio/1.mp3"
                     >[PAD] Cool Organic</a
                   >
                 </li>
                 <li>
-                  <a href="#" data-test="2" class="audio" name="./audio/2.mp3"
-                    >Second song</a
+                  <a href="#" data-audio="2" class="audio" name="./audio/2.mp3"
+                    >[Bass] A Bit Deeper</a
                   >
                 </li>
                 <li>
-                  <a href="#" data-test="3" class="audio" name="./audio/3.mp3"
-                    >Third song</a
-                  >
-                </li>
-                <li>
-                  <a href="#" data-test="4" class="audio" name="./audio/4.mp3"
-                    >Fourth song</a
+                  <a href="#" data-audio="3" class="audio" name="./audio/3.mp3"
+                    >[Bass] A Better Cello</a
                   >
                 </li>
               </ul>
@@ -181,7 +173,20 @@
           <div class="head">
             <img src="./img/WAVEFORM.svg" alt="" />
           </div>
-          <div class="video"></div>
+          <div class="videos">
+            <div class="content-v">
+              <video class="video disabled" data-video="0"></video>
+              <video class="video" data-video="1" playsinline webkit-playsinline>
+                <source src="./video/1.mov" type="video/mp4" />
+              </video>
+              <video class="video" data-video="2" playsinline webkit-playsinline>
+                <source src="./video/1.mov" type="video/mp4" />
+              </video>
+              <video class="video" data-video="3" playsinline webkit-playsinline>
+                <source src="./video/1.mov" type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </div>
         <!-- Right -->
         <div class="right-panel">
@@ -434,28 +439,40 @@
                   <div class="wrapper">
                     <i>Attack</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn" id="osc-1-round-butn-down-1"></span>
+                      <span
+                        class="round-butn"
+                        id="osc-1-round-butn-down-1"
+                      ></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Decay</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn" id="osc-1-round-butn-down-2"></span>
+                      <span
+                        class="round-butn"
+                        id="osc-1-round-butn-down-2"
+                      ></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Sustain</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn" id="osc-1-round-butn-down-3"></span>
+                      <span
+                        class="round-butn"
+                        id="osc-1-round-butn-down-3"
+                      ></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Release</i>
                     <div class="big-control style-for-control">
-                      <span class="round-butn" id="osc-1-round-butn-down-4"></span>
+                      <span
+                        class="round-butn"
+                        id="osc-1-round-butn-down-4"
+                      ></span>
                       <span class="shadow"></span>
                     </div>
                   </div>

@@ -36,6 +36,16 @@
       #34353e 100%
     );
     // overflow: hidden;
+    // &:before {
+    //   position: absolute;
+    //   content: "";
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+
+    //   z-index: 1;
+    // }
     &:after {
       content: "";
       position: absolute;
@@ -43,12 +53,19 @@
       left: 0;
       width: 100%;
       height: 100%;
-      box-shadow: inset 0 1px 2px rgba(230, 230, 255, 0.24);
+      background-image: url(./img/bc-last-row.png);
+      background-position: center center;
+      background-repeat: repeat;
+      box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.5),
+        inset 2px 0 1px rgba(0, 0, 0, 0.5), inset -2px 0 1px rgba(0, 0, 0, 0.5),
+        inset 0 2px 1px rgba(230, 230, 255, 0.12),
+        inset 0 1px 2px rgba(230, 230, 255, 0.24);
       border-radius: 4px 4px 56px 56px;
       opacity: 0.5;
     }
     > div {
       position: relative;
+      z-index: 2;
       &:after {
         content: "";
         position: absolute;
@@ -101,7 +118,8 @@
             &:last-child {
               margin-right: 0;
             }
-            .switch-vertical, .medium-control {
+            .switch-vertical,
+            .medium-control {
               margin: 0;
               margin-top: 8px;
             }
@@ -112,9 +130,9 @@
           .wrapper {
             display: flex;
             align-items: center;
-             i {
-               margin-right: 8px;
-             }
+            i {
+              margin-right: 8px;
+            }
           }
           .select-in {
             display: flex;
@@ -150,7 +168,7 @@
           }
         }
       }
-      
+
       .select-in {
         width: 62px;
         height: 20px;

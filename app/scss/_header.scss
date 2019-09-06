@@ -16,13 +16,13 @@
   );
   border-radius: 2px 2px 0 0;
   z-index: 2;
-  @media (max-width: 950px) {
+  @media (max-width: 960px) {
     padding: 0 12px;
     justify-content: space-between;
   }
   .logo {
     flex: 0 0 27.3%;
-    @media (max-width: 950px) {
+    @media (max-width: 960px) {
       flex: inherit;
     }
     img {
@@ -39,6 +39,7 @@
     cursor: pointer;
     @media (max-width: 650px) {
       min-width: calc(100% - 155px);
+      flex-wrap: wrap;
     }
     .name-music {
       position: relative;
@@ -49,6 +50,9 @@
       box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.24);
       border-radius: 2px;
       background-image: linear-gradient(180deg, #34343b 0%, #212121 100%);
+      @media (max-width: 650px) {
+        max-width: calc(100% - 54px);
+      }
     }
     #text-audio {
       display: flex;
@@ -64,7 +68,7 @@
       top: 24px;
       left: -26px;
       width: calc(100% + 52px);
-      height: 269px;
+      height: fit-content;
       background-color: #000000;
       padding: 2px 2px 4px;
       z-index: 11;
@@ -115,7 +119,7 @@
     align-items: center;
     margin-left: 15px;
     flex-wrap: wrap;
-    @media (max-width: 950px) {
+    @media (max-width: 960px) {
       margin-left: 0;
       width: 104px;
       justify-content: flex-end;
@@ -130,7 +134,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @media (max-width: 950px) {
+      @media (max-width: 960px) {
         display: none;
       }
       .save__a {
@@ -146,14 +150,14 @@
       letter-spacing: -0.03px;
       line-height: 10px;
       text-transform: uppercase;
-      @media (max-width: 950px) {
+      @media (max-width: 960px) {
         display: none;
       }
     }
     .small-control {
       margin-left: 4px;
       margin-right: 16px;
-      @media (max-width: 950px) {
+      @media (max-width: 960px) {
         display: none;
       }
     }
@@ -163,7 +167,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @media (max-width: 950px) {
+      @media (max-width: 960px) {
         display: none;
       }
       .button {
