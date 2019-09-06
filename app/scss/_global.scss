@@ -523,6 +523,11 @@ body {
   .last-row {
     display: none;
   }
+  .second-row .second-row__panel .osc-2 {
+    &:after {
+      display: none;
+    }
+  }
   .first-row {
     .central-screen {
       width: 100%;
