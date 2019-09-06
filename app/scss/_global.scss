@@ -552,6 +552,11 @@ body {
 @media (max-width: 650px) {
   body .player-atom .second-row {
     .second-row__panel {
+      .osc-1 {
+        &:after {
+          display: none;
+        }
+      }
       .osc-2 {
         display: none;
       }
