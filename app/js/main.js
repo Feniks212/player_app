@@ -151,70 +151,7 @@ $(document).ready(function() {
 function switchFunction(dateElement) {
   switch (dateElement) {
     case "1": // if the audion and video has a date attribute of "1"
-      changeRoundButn(
-        "rotate(35deg)",
-        "rotate(-35deg)",
-        "rotate(15deg)",
-        "rotate(-65deg)",
-        "rotate(25deg)",
-        "rotate(55deg)",
-        "rotate(80deg)",
-        "rotate(-55deg)",
-        "rotate(100deg)",
-        "rotate(95deg)",
-        "rotate(15deg)",
-        "rotate(-35deg)",
-        "rotate(-35deg)",
-        "rotate(-55deg)",
-        "rotate(150deg)",
-        "rotate(-140deg)",
-        "rotate(-140deg)",
-        "rotate(-140deg)",
-        "rotate(-50deg)",
-        "rotate(-140deg)",
-        "rotate(140deg)",
-        "rotate(50deg)",
-        "rotate(-50deg)",
-        "rotate(45deg)",
-        "rotate(-35deg)",
-        "rotate(-90deg)",
-        "rotate(-100deg)",
-        "rotate(150deg)",
-        "rotate(-120deg)",
-        "rotate(-55deg)",
-        "rotate(-35deg)",
-        "rotate(135deg)",
-        "rotate(45deg)",
-        "rotate(-35deg)",
-        "rotate(-35deg)",
-        "rotate(-35deg)",
-        "rotate(145deg)",
-        "rotate(-30deg)",
-        "rotate(145deg)",
-        "rotate(-145deg)",
-        "rotate(-85deg)",
-        "rotate(220deg)",
-        "rotate(160deg)",
-        "rotate(-60deg)",
-        "rotate(85deg)",
-        "rotate(-110deg)",
-        "rotate(-90deg)",
-        "rotate(160deg)",
-        "rotate(-160deg)",
-        "rotate(-160deg)",
-        "rotate(100deg)",
-        "rotate(100deg)",
-        "rotate(-160deg)",
-        "rotate(-110deg)",
-        "rotate(-100deg)",
-        "rotate(160deg)",
-        "rotate(-50deg)",
-        "rotate(160deg)",
-        "rotate(-75deg)",
-        "rotate(-160deg)",
-        "rotate(-40deg)"
-      );
-
+      changeRoundButn();
       changeActPanel(
         "",
         "",
@@ -264,70 +201,7 @@ function switchFunction(dateElement) {
       changeButtonFilter("on", "", "", "");
       break;
     case "2": // if the audion and video has a date attribute of "2"
-      changeRoundButn(
-        "rotate(55deg)",
-        "rotate(55deg)",
-        "rotate(-55deg)",
-        "rotate(55deg)",
-        "rotate(55deg)",
-        "rotate(55deg)",
-        "rotate(25deg)",
-        "rotate(35deg)",
-        "rotate(45deg)",
-        "rotate(55deg)",
-        "rotate(75deg)",
-        "rotate(55deg)",
-        "rotate(-90deg)",
-        "rotate(-55deg)",
-        "rotate(-40deg)",
-        "rotate(-140deg)",
-        "rotate(35deg)",
-        "rotate(-140deg)",
-        "rotate(-130deg)",
-        "rotate(-140deg)",
-        "rotate(80deg)",
-        "rotate(-60deg)",
-        "rotate(-45deg)",
-        "rotate(-145deg)",
-        "rotate(35deg)",
-        "rotate(-90deg)",
-        "rotate(-140deg)",
-        "rotate(-140deg)",
-        "rotate(-140deg)",
-        "rotate(-120deg)",
-        "rotate(-135deg)",
-        "rotate(-35deg)",
-        "rotate(-45deg)",
-        "rotate(55deg)",
-        "rotate(55deg)",
-        "rotate(55deg)",
-        "rotate(145deg)",
-        "rotate(-30deg)",
-        "rotate(145deg)",
-        "rotate(-145deg)",
-        "rotate(-85deg)",
-        "rotate(220deg)",
-        "rotate(160deg)",
-        "rotate(-60deg)",
-        "rotate(-155deg)",
-        "rotate(-80deg)",
-        "rotate(-130deg)",
-        "rotate(-95deg)",
-        "rotate(-160deg)",
-        "rotate(-160deg)",
-        "rotate(100deg)",
-        "rotate(100deg)",
-        "rotate(-160deg)",
-        "rotate(-110deg)",
-        "rotate(-100deg)",
-        "rotate(160deg)",
-        "rotate(-50deg)",
-        "rotate(160deg)",
-        "rotate(-55deg)",
-        "rotate(-160deg)",
-        "rotate(-40deg)"
-      );
-
+      changeRoundButn();
       changeActPanel(
         "",
         "",
@@ -377,70 +251,7 @@ function switchFunction(dateElement) {
       changeButtonFilter("", "", "on", "");
       break;
     case "3": // if the audion and video has a date attribute of "3"
-      changeRoundButn(
-        "rotate(-5deg)",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "rotate(65deg)",
-        "rotate(-90deg)",
-        "",
-        "rotate(-10deg)",
-        "rotate(-140deg)",
-        "rotate(-130deg)",
-        "rotate(-140deg)",
-        "rotate(-130deg)",
-        "rotate(-40deg)",
-        "rotate(-85deg)",
-        "rotate(50deg)",
-        "rotate(45deg)",
-        "rotate(45deg)",
-        "",
-        "rotate(145deg)",
-        "rotate(-140deg)",
-        "rotate(-140deg)",
-        "rotate(-80deg)",
-        "rotate(-140deg)",
-        "rotate(-135deg)",
-        "rotate(-140deg)",
-        "rotate(-105deg)",
-        "",
-        "",
-        "",
-        "rotate(145deg)",
-        "rotate(-30deg)",
-        "rotate(145deg)",
-        "rotate(-145deg)",
-        "rotate(-85deg)",
-        "rotate(220deg)",
-        "rotate(160deg)",
-        "rotate(-60deg)",
-        "rotate(-5deg)",
-        "rotate(0deg)",
-        "rotate(-90deg)",
-        "rotate(-100deg)",
-        "rotate(0deg)",
-        "rotate(-30deg)",
-        "rotate(100deg)",
-        "rotate(100deg)",
-        "rotate(-160deg)",
-        "rotate(-110deg)",
-        "rotate(-100deg)",
-        "rotate(160deg)",
-        "rotate(-50deg)",
-        "rotate(160deg)",
-        "",
-        "rotate(-160deg)",
-        "rotate(-40deg)"
-      );
-
+      changeRoundButn();
       changeActPanel(
         "",
         "",
@@ -543,12 +354,17 @@ function changeSliders() {
   //Add properties
   mainСycle(sliders, arguments); // function start "mainСycle"
 }
+////function to random element "round-butn"
+function randomElem(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 //function to check which element to apply properties
 function mainСycle(elem, properties) {
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].classList.contains("round-butn")) {
-      elem[i].style.transform = properties[i];
+      let rand = randomElem(-150, 150);//random element "round-butn" MIN and MAX
+      elem[i].style.transform = `rotate(${rand}deg)`;
     } else if (
       elem[i].classList.contains("act-panel") ||
       elem[i].classList.contains("switch") ||
