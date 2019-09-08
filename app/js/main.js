@@ -53,11 +53,11 @@ $(document).ready(function() {
   });
 
   for (let i = 0; i < audios.length; i++) {
-    arrayAudio.push(audios[i]); // find all items "a.audio"
+    arrayAudio.push(audios[i]); // create array all items "a.audio"
   }
 
   for (let i = 0; i < videos.length; i++) {
-    arrayVideos.push(videos[i]); // find all items "video"
+    arrayVideos.push(videos[i]); // create array all items "video"
   }
 
   let arraybutton = []; // this is array element "button prev" and "button next"
@@ -165,27 +165,7 @@ function switchFunction(dateElement) {
         "",
         "active"
       );
-      changeButtonEffects(
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "on"
-      );
+      // changeButtonEffects();
       changeSwitch("active", "active", "", "active");
       changeSwitchlettical();
       changeSliders(
@@ -215,27 +195,7 @@ function switchFunction(dateElement) {
         "",
         ""
       );
-      changeButtonEffects(
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "on"
-      );
+      // changeButtonEffects();
       changeSwitch("active", "active", "", "active");
       changeSwitchlettical("active");
       changeSliders(
@@ -265,27 +225,7 @@ function switchFunction(dateElement) {
         "",
         ""
       );
-      changeButtonEffects(
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "on",
-        "",
-        "",
-        "",
-        "on"
-      );
+      // changeButtonEffects();
       changeSwitch("active", "active", "", "active");
       changeSwitchlettical("active");
       changeSliders(
@@ -355,15 +295,47 @@ function changeSliders() {
   mainСycle(sliders, arguments); // function start "mainСycle"
 }
 ////function to random element "round-butn"
-function randomElem(min, max) {
+function randomRoundButn(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function randombuttonEffects() {
+  
+  let objectbuttonEffects = new Object();
+  
+  objectbuttonEffects.lfo1 = $(".lfo-1 .button-effects");
+  objectbuttonEffects.lfo2 = $(".lfo-2 .button-effects");
+  objectbuttonEffects.osc1 = $(".osc-1 .button-effects");
+  objectbuttonEffects.osc2 = $(".osc-2 .button-effects");
+  objectbuttonEffects.osc3 = $(".osc-3 .button-effects");
+
+  let count = Object.values(objectbuttonEffects);
+  let arrayblocks = [];
+  
+  for (let i = 0; i < count.length; i++) {
+    let element = count[i];
+    arrayblocks.push(element);
+  }
+  arrayblocks.forEach(element => {
+    let arraybuttonEffects = [];
+    for (let i = 0; i < element.length; i++) {
+      const ros = element[i];
+      ros.classList.remove("on");
+      arraybuttonEffects.push(ros);
+    }
+    let quantity = arraybuttonEffects.length;
+    arraybuttonEffects[random(0, quantity)].classList.add("on");
+  });
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 }
 
 //function to check which element to apply properties
 function mainСycle(elem, properties) {
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].classList.contains("round-butn")) {
-      let rand = randomElem(-150, 150);//random element "round-butn" MIN and MAX
+      let rand = randomRoundButn(-150, 150);//random element "round-butn" MIN and MAX
       elem[i].style.transform = `rotate(${rand}deg)`;
     } else if (
       elem[i].classList.contains("act-panel") ||
@@ -380,7 +352,8 @@ function mainСycle(elem, properties) {
       elem[i].classList.contains("filters")
     ) {
       if (properties[i] != "") {
-        elem[i].classList.add(properties[i]);
+        // elem[i].classList.add(properties[i]);
+        randombuttonEffects();
       } else {
         elem[i].classList.remove("on");
       }
