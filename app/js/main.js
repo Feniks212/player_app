@@ -295,14 +295,14 @@ function changeSliders() {
   mainСycle(sliders, arguments); // function start "mainСycle"
 }
 ////function to random element "round-butn"
-function randomRoundButn(min, max) {
+function randomFunction(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function randombuttonEffects() {
   
   let objectbuttonEffects = new Object();
-  
+
   objectbuttonEffects.lfo1 = $(".lfo-1 .button-effects");
   objectbuttonEffects.lfo2 = $(".lfo-2 .button-effects");
   objectbuttonEffects.osc1 = $(".osc-1 .button-effects");
@@ -324,18 +324,15 @@ function randombuttonEffects() {
       arraybuttonEffects.push(ros);
     }
     let quantity = arraybuttonEffects.length;
-    arraybuttonEffects[random(0, quantity)].classList.add("on");
+    arraybuttonEffects[randomFunction(0, quantity)].classList.add("on");
   });
-  function random(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
 }
 
 //function to check which element to apply properties
 function mainСycle(elem, properties) {
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].classList.contains("round-butn")) {
-      let rand = randomRoundButn(-150, 150);//random element "round-butn" MIN and MAX
+      let rand = randomFunction(-150, 150);//random element "round-butn" MIN and MAX
       elem[i].style.transform = `rotate(${rand}deg)`;
     } else if (
       elem[i].classList.contains("act-panel") ||
