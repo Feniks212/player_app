@@ -93,6 +93,9 @@
               color: #ad2550;
               opacity: 1;
             }
+            &.play {
+              pointer-events: none;
+            }
           }
           a.disabled {
             visibility: hidden;

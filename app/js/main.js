@@ -18,6 +18,14 @@ let switchs = objectMain.switchs; // find all items "switch"
 let switchVertical = objectMain.switchVertical; // find all items "switch-vertical"
 let sliders = objectMain.sliders; // find all items "slider"
 
+let objectbuttonEffects = new Object();
+
+objectbuttonEffects.lfo1 = $(".lfo-1 .button-effects");
+objectbuttonEffects.lfo2 = $(".lfo-2 .button-effects");
+objectbuttonEffects.osc1 = $(".osc-1 .button-effects");
+objectbuttonEffects.osc2 = $(".osc-2 .button-effects");
+objectbuttonEffects.osc3 = $(".osc-3 .button-effects");
+
 $(document).ready(function() {
   // function to open a block with a list of audio
   $(".hide").click(function() {
@@ -152,93 +160,30 @@ function switchFunction(dateElement) {
   switch (dateElement) {
     case "1": // if the audion and video has a date attribute of "1"
       changeRoundButn();
-      changeActPanel(
-        "",
-        "",
-        "active",
-        "",
-        "active",
-        "active",
-        "",
-        "active",
-        "",
-        "",
-        "active"
-      );
-      // changeButtonEffects();
-      changeSwitch("active", "active", "", "active");
-      changeSwitchlettical();
-      changeSliders(
-        "65%",
-        "calc(100% - 15px)",
-        "0",
-        "55%",
-        "65%",
-        "calc(100% - 15px)",
-        "0",
-        "55%"
-      );
-      changeButtonFilter("on", "", "", "");
+      changeActPanel();
+      randombuttonEffects();
+      changeSwitch();
+      changeSwitchVertical();
+      changeSliders();
+      changeButtonFilter();
       break;
     case "2": // if the audion and video has a date attribute of "2"
       changeRoundButn();
-      changeActPanel(
-        "",
-        "",
-        "active",
-        "",
-        "active",
-        "active",
-        "",
-        "active",
-        "active",
-        "",
-        ""
-      );
-      // changeButtonEffects();
-      changeSwitch("active", "active", "", "active");
-      changeSwitchlettical("active");
-      changeSliders(
-        "35%",
-        "calc(50% - 15px)",
-        "15%",
-        "55%",
-        "35%",
-        "calc(60% - 15px)",
-        "0",
-        "45%"
-      );
-      changeButtonFilter("", "", "on", "");
+      changeActPanel();
+      randombuttonEffects();
+      changeSwitch();
+      changeSwitchVertical();
+      changeSliders();
+      changeButtonFilter();
       break;
     case "3": // if the audion and video has a date attribute of "3"
       changeRoundButn();
-      changeActPanel(
-        "",
-        "",
-        "active",
-        "",
-        "active",
-        "active",
-        "",
-        "active",
-        "active",
-        "",
-        ""
-      );
-      // changeButtonEffects();
-      changeSwitch("active", "active", "", "active");
-      changeSwitchlettical("active");
-      changeSliders(
-        "65%",
-        "calc(100% - 15px)",
-        "0",
-        "55%",
-        "65%",
-        "calc(20% - 15px)",
-        "55%",
-        "15%"
-      );
-      changeButtonFilter("on", "", "", "");
+      changeActPanel();
+      randombuttonEffects();
+      changeSwitch();
+      changeSwitchVertical();
+      changeSliders();
+      changeButtonFilter();
       break;
     default:
       console.log("Error");
@@ -248,70 +193,76 @@ function switchFunction(dateElement) {
 // function for all elements "RoundButn" in HTML
 function changeRoundButn() {
   // Remove all attribute
-  $(".round-butn").removeAttr("style");
+  roundButns.removeAttr("style");
   // Add properties
   mainСycle(roundButns, arguments); // function start "mainСycle"
 }
 
 function changeActPanel() {
   // Remove all classes
-  $(".act-panel").removeClass("active");
+  actPanels.removeClass("active");
   //Add properties
-  mainСycle(actPanels, arguments); // function start "mainСycle"
+
+  actPanels[randomFunction(0, actPanels.length)].classList.add("active");
+  // mainСycle(actPanels, arguments); // function start "mainСycle"
 }
 
-function changeButtonEffects() {
-  // Remove all classes
-  $(".button-effects").removeClass("on");
-  //Add properties
-  mainСycle(buttonEffects, arguments); // function start "mainСycle"
-}
+// function changeButtonEffects() {
+//   // Remove all classes
+//   $(".button-effects").removeClass("on");
+//   //Add properties
+//   mainСycle(buttonEffects, arguments); // function start "mainСycle"
+// }
 
 function changeButtonFilter() {
   // Remove all classes
-  $(".filters").removeClass("on");
+  changeButtonFilters.removeClass("on");
   //Add properties
-  mainСycle(changeButtonFilters, arguments); // function start "mainСycle"
+  changeButtonFilters[
+    randomFunction(0, changeButtonFilters.length)
+  ].classList.add("on");
+  // mainСycle(changeButtonFilters, arguments); // function start "mainСycle"
 }
 
 function changeSwitch() {
   // Remove all classes
-  $(".switch").removeClass("active");
+  switchs.removeClass("active");
   //Add properties
-  mainСycle(switchs, arguments); // function start "mainСycle"
+  switchs[randomFunction(0, switchs.length)].classList.add("active");
+  // mainСycle(switchs, arguments); // function start "mainСycle"
 }
 
-function changeSwitchlettical() {
+function changeSwitchVertical() {
   // Remove all classes
-  $(".switch-vertical").removeClass("active");
+  switchVertical.removeClass("active");
   //Add properties
-  mainСycle(switchVertical, arguments); // function start "mainСycle"
+  switchVertical[randomFunction(0, switchVertical.length)].classList.add("active");
+  // mainСycle(switchVertical, arguments); // function start "mainСycle"
 }
 
 function changeSliders() {
   // Remove all attribute
-  $(".slider").removeAttr("style");
+  sliders.removeAttr("style");
   //Add properties
+  let arraySliders = [];
+  for (let i = 0; i < sliders.length; i++) {
+    const element = sliders[i];
+    arraySliders.push(element);
+  }
+  arraySliders.forEach(element => {
+    element.style.top = `${randomFunction(0, 76)}%`;
+  });
   mainСycle(sliders, arguments); // function start "mainСycle"
 }
-////function to random element "round-butn"
+//function to random element "round-butn"
 function randomFunction(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function randombuttonEffects() {
-  
-  let objectbuttonEffects = new Object();
-
-  objectbuttonEffects.lfo1 = $(".lfo-1 .button-effects");
-  objectbuttonEffects.lfo2 = $(".lfo-2 .button-effects");
-  objectbuttonEffects.osc1 = $(".osc-1 .button-effects");
-  objectbuttonEffects.osc2 = $(".osc-2 .button-effects");
-  objectbuttonEffects.osc3 = $(".osc-3 .button-effects");
-
   let count = Object.values(objectbuttonEffects);
   let arrayblocks = [];
-  
+
   for (let i = 0; i < count.length; i++) {
     let element = count[i];
     arrayblocks.push(element);
@@ -332,29 +283,29 @@ function randombuttonEffects() {
 function mainСycle(elem, properties) {
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].classList.contains("round-butn")) {
-      let rand = randomFunction(-150, 150);//random element "round-butn" MIN and MAX
+      let rand = randomFunction(-150, 150); //random element "round-butn" MIN and MAX
       elem[i].style.transform = `rotate(${rand}deg)`;
-    } else if (
-      elem[i].classList.contains("act-panel") ||
-      elem[i].classList.contains("switch") ||
-      elem[i].classList.contains("switch-vertical")
-    ) {
-      if (properties[i] != "") {
-        elem[i].classList.add(properties[i]);
-      } else {
-        elem[i].classList.remove("active");
-      }
-    } else if (
-      elem[i].classList.contains("button-effects") ||
-      elem[i].classList.contains("filters")
-    ) {
-      if (properties[i] != "") {
-        // elem[i].classList.add(properties[i]);
-        randombuttonEffects();
-      } else {
-        elem[i].classList.remove("on");
-      }
-    } else if (elem[i].classList.contains("slider")) {
+    } // else if (
+    //   elem[i].classList.contains("act-panel") ||
+    //   elem[i].classList.contains("switch") ||
+    //   elem[i].classList.contains("switch-vertical")
+    // ) {
+    //   if (properties[i] != "") {
+    //     elem[i].classList.add(properties[i]);
+    //   } else {
+    //     elem[i].classList.remove("active");
+    //   }
+    // } else if (
+    //   elem[i].classList.contains("button-effects") ||
+    //   elem[i].classList.contains("filters")
+    // ) {
+    //   if (properties[i] != "") {
+    //     // elem[i].classList.add(properties[i]);
+    //   } else {
+    //     elem[i].classList.remove("on");
+    //   }
+    // }
+    else if (elem[i].classList.contains("slider")) {
       elem[i].style.top = properties[i];
     } else {
       console.log("error");
