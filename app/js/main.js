@@ -1,6 +1,8 @@
 "use strict";
 
 const objectMain = new Object();
+const objectbuttonEffects = new Object();
+const objectActPanels = new Object();
 
 objectMain.roundButns = $(".round-butn");
 objectMain.actPanels = $(".act-panel");
@@ -18,15 +20,28 @@ let switchs = objectMain.switchs; // find all items "switch"
 let switchVertical = objectMain.switchVertical; // find all items "switch-vertical"
 let sliders = objectMain.sliders; // find all items "slider"
 
-let objectbuttonEffects = new Object();
-
 objectbuttonEffects.lfo1 = $(".lfo-1 .button-effects");
 objectbuttonEffects.lfo2 = $(".lfo-2 .button-effects");
 objectbuttonEffects.osc1 = $(".osc-1 .button-effects");
 objectbuttonEffects.osc2 = $(".osc-2 .button-effects");
 objectbuttonEffects.osc3 = $(".osc-3 .button-effects");
 
+objectActPanels.firstRow = $(".first-row .act-panel");
+objectActPanels.secondRow = $(".second-row .act-panel");
+objectActPanels.lastRow = $(".last-row .act-panel");
+
 $(document).ready(function() {
+  $(function() {
+    $(".overlapping").fadeOut();
+    setInterval(() => {
+      $(".overlapping")[0].style.display = "flex";
+      $(".overlapping").fadeIn();
+      setTimeout(() => {
+        $(".overlapping").fadeOut();
+      }, 3000);
+    }, 11000);
+});
+
   // function to open a block with a list of audio
   $(".hide").click(function() {
     $(".list-audio").hide();
@@ -195,24 +210,15 @@ function changeRoundButn() {
   // Remove all attribute
   roundButns.removeAttr("style");
   // Add properties
-  mainСycle(roundButns, arguments); // function start "mainСycle"
+  for (let i = 0; i < roundButns.length; i++) {
+    if (roundButns[i].classList.contains("round-butn")) {
+      let rand = randomFunction(-150, 150); //random element "round-butn" MIN and MAX
+      roundButns[i].style.transform = `rotate(${rand}deg)`;
+    } else {
+      return false;
+    }
+  }
 }
-
-function changeActPanel() {
-  // Remove all classes
-  actPanels.removeClass("active");
-  //Add properties
-
-  actPanels[randomFunction(0, actPanels.length)].classList.add("active");
-  // mainСycle(actPanels, arguments); // function start "mainСycle"
-}
-
-// function changeButtonEffects() {
-//   // Remove all classes
-//   $(".button-effects").removeClass("on");
-//   //Add properties
-//   mainСycle(buttonEffects, arguments); // function start "mainСycle"
-// }
 
 function changeButtonFilter() {
   // Remove all classes
@@ -236,7 +242,9 @@ function changeSwitchVertical() {
   // Remove all classes
   switchVertical.removeClass("active");
   //Add properties
-  switchVertical[randomFunction(0, switchVertical.length)].classList.add("active");
+  switchVertical[randomFunction(0, switchVertical.length)].classList.add(
+    "active"
+  );
   // mainСycle(switchVertical, arguments); // function start "mainСycle"
 }
 
@@ -252,7 +260,7 @@ function changeSliders() {
   arraySliders.forEach(element => {
     element.style.top = `${randomFunction(0, 76)}%`;
   });
-  mainСycle(sliders, arguments); // function start "mainСycle"
+  // mainСycle(sliders, arguments); // function start "mainСycle"
 }
 //function to random element "round-butn"
 function randomFunction(min, max) {
@@ -260,55 +268,39 @@ function randomFunction(min, max) {
 }
 
 function randombuttonEffects() {
-  let count = Object.values(objectbuttonEffects);
-  let arrayblocks = [];
+  // Remove all classes
+  buttonEffects.removeClass("on");
 
-  for (let i = 0; i < count.length; i++) {
-    let element = count[i];
-    arrayblocks.push(element);
-  }
-  arrayblocks.forEach(element => {
-    let arraybuttonEffects = [];
-    for (let i = 0; i < element.length; i++) {
-      const ros = element[i];
-      ros.classList.remove("on");
-      arraybuttonEffects.push(ros);
-    }
-    let quantity = arraybuttonEffects.length;
-    arraybuttonEffects[randomFunction(0, quantity)].classList.add("on");
-  });
+  //Add properties
+  let obj = Object.values(objectbuttonEffects);
+  let className = "on";
+  mainchange(obj, className);
 }
 
-//function to check which element to apply properties
-function mainСycle(elem, properties) {
-  for (let i = 0; i < elem.length; i++) {
-    if (elem[i].classList.contains("round-butn")) {
-      let rand = randomFunction(-150, 150); //random element "round-butn" MIN and MAX
-      elem[i].style.transform = `rotate(${rand}deg)`;
-    } // else if (
-    //   elem[i].classList.contains("act-panel") ||
-    //   elem[i].classList.contains("switch") ||
-    //   elem[i].classList.contains("switch-vertical")
-    // ) {
-    //   if (properties[i] != "") {
-    //     elem[i].classList.add(properties[i]);
-    //   } else {
-    //     elem[i].classList.remove("active");
-    //   }
-    // } else if (
-    //   elem[i].classList.contains("button-effects") ||
-    //   elem[i].classList.contains("filters")
-    // ) {
-    //   if (properties[i] != "") {
-    //     // elem[i].classList.add(properties[i]);
-    //   } else {
-    //     elem[i].classList.remove("on");
-    //   }
-    // }
-    else if (elem[i].classList.contains("slider")) {
-      elem[i].style.top = properties[i];
-    } else {
-      console.log("error");
-    }
+function changeActPanel() {
+  // Remove all classes
+  actPanels.removeClass("active");
+
+  //Add properties
+  let obj = Object.values(objectActPanels);
+  let className = "active";
+  mainchange(obj, className);
+}
+
+function mainchange(object, classes) {
+  let array = [];
+  for (let i = 0; i < object.length; i++) {
+    let element = object[i];
+    array.push(element);
   }
+  array.forEach(element => {
+    let arrayforEach = [];
+    for (let i = 0; i < element.length; i++) {
+      const ros = element[i];
+      ros.classList.remove(`${classes}`);
+      arrayforEach.push(ros);
+    }
+    let quantity = arrayforEach.length;
+    arrayforEach[randomFunction(0, quantity)].classList.add(`${classes}`);
+  });
 }

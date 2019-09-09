@@ -29,6 +29,11 @@
         <div class="logo">
           <img src="./img/logo.svg" alt="logo" />
         </div>
+        <a
+          href="https://emastered.com/atom/checkout"
+          target="_blank"
+          class="redirect"
+        ></a>
         <div class="list-music style">
           <span class="button prev"></span>
           <div id="open-audio" class="name-music">
@@ -57,6 +62,7 @@
             </div>
           </div>
           <span class="button next"></span>
+          <div class="hide"></div>
         </div>
         <div class="setting-player">
           <div class="save style">
@@ -64,7 +70,7 @@
           </div>
           <span>master<br />volume</span>
           <div class="small-control style">
-            <span class="round-butn" id="round-butn-1"></span>
+            <span class="round-butn"></span>
             <span class="shadow"></span>
           </div>
           <div class="two-button style">
@@ -75,7 +81,6 @@
             <img src="./img/logo-2.svg" alt="" />
           </div>
         </div>
-        <div class="hide"></div>
       </section>
 
       <!-- FIRST row -->
@@ -176,13 +181,28 @@
           <div class="videos">
             <div class="content-v">
               <video class="video disabled" data-video="0"></video>
-              <video class="video" data-video="1" playsinline webkit-playsinline>
+              <video
+                class="video"
+                data-video="1"
+                playsinline
+                webkit-playsinline
+              >
                 <source src="./video/1.mov" type="video/mp4" />
               </video>
-              <video class="video" data-video="2" playsinline webkit-playsinline>
+              <video
+                class="video"
+                data-video="2"
+                playsinline
+                webkit-playsinline
+              >
                 <source src="./video/1.mov" type="video/mp4" />
               </video>
-              <video class="video" data-video="3" playsinline webkit-playsinline>
+              <video
+                class="video"
+                data-video="3"
+                playsinline
+                webkit-playsinline
+              >
                 <source src="./video/1.mov" type="video/mp4" />
               </video>
             </div>
@@ -202,7 +222,7 @@
                   <i>A</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-1-slider-1">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -211,7 +231,7 @@
                   <i>D</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-1-slider-2">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -220,7 +240,7 @@
                   <i>S</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-1-slider-3">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -229,7 +249,7 @@
                   <i>R</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-1-slider-4">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -280,7 +300,7 @@
                   <i>A</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-2-slider-1">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -289,7 +309,7 @@
                   <i>D</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-2-slider-2">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -298,7 +318,7 @@
                   <i>S</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-2-slider-3">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -307,7 +327,7 @@
                   <i>R</i>
                   <div class="fader">
                     <span class="line"></span>
-                    <div class="slider" id="env-2-slider-4">
+                    <div class="slider">
                       <span></span>
                     </div>
                   </div>
@@ -376,28 +396,28 @@
                     <div class="wrapper">
                       <i>Volume</i>
                       <div class="very-big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-1"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Pitch</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-2"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Fine tune</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-3"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Hi-cut</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-4"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
@@ -413,21 +433,21 @@
                     <div class="wrapper">
                       <i>Detune</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-5"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>Stereo</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-6"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
                     <div class="wrapper">
                       <i>LO-cut</i>
                       <div class="big-control style-for-control">
-                        <span class="round-butn" id="osc-1-round-butn-7"></span>
+                        <span class="round-butn"></span>
                         <span class="shadow"></span>
                       </div>
                     </div>
@@ -439,40 +459,28 @@
                   <div class="wrapper">
                     <i>Attack</i>
                     <div class="big-control style-for-control">
-                      <span
-                        class="round-butn"
-                        id="osc-1-round-butn-down-1"
-                      ></span>
+                      <span class="round-butn"></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Decay</i>
                     <div class="big-control style-for-control">
-                      <span
-                        class="round-butn"
-                        id="osc-1-round-butn-down-2"
-                      ></span>
+                      <span class="round-butn"></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Sustain</i>
                     <div class="big-control style-for-control">
-                      <span
-                        class="round-butn"
-                        id="osc-1-round-butn-down-3"
-                      ></span>
+                      <span class="round-butn"></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
                   <div class="wrapper">
                     <i>Release</i>
                     <div class="big-control style-for-control">
-                      <span
-                        class="round-butn"
-                        id="osc-1-round-butn-down-4"
-                      ></span>
+                      <span class="round-butn"></span>
                       <span class="shadow"></span>
                     </div>
                   </div>
@@ -986,6 +994,9 @@
       <span class="decoration">
         <img src="./img/bolt.svg" alt="" />
       </span>
+      <div class="overlapping">
+          <a id="button-redirection" href="https://emastered.com/atom/checkout" class="button try-atom-cta">Try it free</a>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
