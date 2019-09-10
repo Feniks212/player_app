@@ -31,16 +31,33 @@ objectActPanels.secondRow = $(".second-row .act-panel");
 objectActPanels.lastRow = $(".last-row .act-panel");
 
 $(document).ready(function() {
-  $(function() {
-    $(".overlapping").fadeOut();
-    setInterval(() => {
-      $(".overlapping")[0].style.display = "flex";
-      $(".overlapping").fadeIn();
-      setTimeout(() => {
-        $(".overlapping").fadeOut();
+  let myTimer = setInterval(loopTime, 7000);
+  $(".overlapping").fadeOut();
+
+  let popup = document.querySelector(".open-popup");
+  popup.addEventListener("click", function(event) {
+    let target = event.target;
+    if (target) {
+      $(".overlapping")[0].style.opacity = "1";
+      $(".overlapping").fadeIn(500);
+      setTimeout(function() {
+        $(".overlapping").fadeOut(500);
+        $(".overlapping")[0].style.opacity = "0";
       }, 3000);
-    }, 11000);
-});
+      clearInterval(myTimer);
+      myTimer = setInterval(loopTime, 11000);
+    }
+  });
+  function loopTime() {
+    $(".overlapping")[0].style.opacity = "1";
+    $(".overlapping").fadeIn(500);
+    setTimeout(() => {
+      $(".overlapping").fadeOut(500);
+      $(".overlapping")[0].style.opacity = "0";
+    }, 3000);
+  }
+  clearInterval(myTimer);
+  myTimer = setInterval(loopTime, 11000);
 
   // function to open a block with a list of audio
   $(".hide").click(function() {

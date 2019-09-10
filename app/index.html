@@ -29,11 +29,7 @@
         <div class="logo">
           <img src="./img/logo.svg" alt="logo" />
         </div>
-        <a
-          href="https://emastered.com/atom/checkout"
-          target="_blank"
-          class="redirect"
-        ></a>
+        <div class="open-popup"></div>
         <div class="list-music style">
           <span class="button prev"></span>
           <div id="open-audio" class="name-music">
@@ -180,7 +176,9 @@
           </div>
           <div class="videos">
             <div class="content-v">
-              <video class="video disabled" data-video="0"></video>
+              <video class="video" data-video="0">
+                <source src="./video/1.mov" type="video/mp4">
+              </video>
               <video
                 class="video"
                 data-video="1"
@@ -995,7 +993,12 @@
         <img src="./img/bolt.svg" alt="" />
       </span>
       <div class="overlapping">
-          <a id="button-redirection" href="https://emastered.com/atom/checkout" class="button try-atom-cta">Try it free</a>
+        <a
+          id="button-redirection"
+          href="https://emastered.com/atom/checkout"
+          class="button try-atom-cta"
+          >Try it free</a
+        >
       </div>
     </div>
 
