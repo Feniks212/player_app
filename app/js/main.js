@@ -31,33 +31,37 @@ objectActPanels.secondRow = $(".second-row .act-panel");
 objectActPanels.lastRow = $(".last-row .act-panel");
 
 $(document).ready(function() {
-  // let myTimer = setInterval(loopTime, 7000);
-  // $(".overlapping").fadeOut();
+  // let event = new Event("touchstart");
+  let audio = new Audio(); // Create a new item Audio
+  let audios = $(".audio"); // find all items "audio"
+  let videos = $(".video"); // find all items "video"
+  let Current = 0; // procedure
+  let arrayAudio = []; // this is array element "a.audio"
+  audio.autoplay = true;
 
-  // let popup = document.querySelector(".open-popup");
-  // popup.addEventListener("click", function(event) {
-  //   let target = event.target;
-  //   if (target) {
-  //     $(".overlapping")[0].style.opacity = "1";
-  //     $(".overlapping").fadeIn(500);
-  //     setTimeout(function() {
-  //       $(".overlapping").fadeOut(500);
-  //       $(".overlapping")[0].style.opacity = "0";
-  //     }, 3000);
-  //     clearInterval(myTimer);
-  //     myTimer = setInterval(loopTime, 11000);
-  //   }
-  // });
-  // function loopTime() {
-  //   $(".overlapping")[0].style.opacity = "1";
-  //   $(".overlapping").fadeIn(500);
-  //   setTimeout(() => {
-  //     $(".overlapping").fadeOut(500);
-  //     $(".overlapping")[0].style.opacity = "0";
-  //   }, 3000);
-  // }
-  // clearInterval(myTimer);
-  // myTimer = setInterval(loopTime, 11000);
+  // let arrayVideos = []; // this is array element "video"
+
+  // setTimeout(() => {
+  $(".overlapping").fadeOut();
+  // }, 4000);
+
+  // let myTimer = setInterval(loopTime, 7000);
+  // // $(".overlapping").fadeOut();
+
+  let popup = document.querySelector(".open-popup");
+  popup.addEventListener("click", function(event) {
+    let target = event.target;
+    if (target) {
+      $(".overlapping")[0].style.opacity = "1";
+      $(".overlapping").fadeIn(500);
+      setTimeout(function() {
+        $(".overlapping").fadeOut(500);
+        $(".overlapping")[0].style.opacity = "0";
+      }, 3000);
+      // clearInterval(myTimer);
+      // myTimer = setInterval(loopTime, 11000);
+    }
+  });
 
   // function to open a block with a list of audio
   $(".hide").click(function() {
@@ -68,14 +72,6 @@ $(document).ready(function() {
     $(".list-audio").show(); // to open
     $(".hide").show();
   });
-
-  let audios = $(".audio"); // find all items "audio"
-  let videos = $(".video"); // find all items "video"
-  let Current = 0; // procedure
-  let arrayAudio = []; // this is array element "a.audio"
-  let arrayVideos = []; // this is array element "video"
-
-  let audio = new Audio(); // Create a new item Audio
 
   // function launch music and change the text in the panel
   $(".audio").click(function() {
@@ -90,15 +86,19 @@ $(document).ready(function() {
 
     textAudioName.textContent = this.childNodes[0].textContent;
     Current = this.dataset.audio;
+    audio.onended = function() {
+      videos[0].pause();
+      videos[0].currentTime = "0";
+    };
   });
 
   for (let i = 0; i < audios.length; i++) {
     arrayAudio.push(audios[i]); // create array all items "a.audio"
   }
 
-  for (let i = 0; i < videos.length; i++) {
-    arrayVideos.push(videos[i]); // create array all items "video"
-  }
+  // for (let i = 0; i < videos.length; i++) {
+  //   arrayVideos.push(videos[i]); // create array all items "video"
+  // }
 
   let arraybutton = []; // this is array element "button prev" and "button next"
   let button = $(".list-music .button");
@@ -119,9 +119,15 @@ $(document).ready(function() {
     document.getElementById("text-audio").innerHTML =
       arrayAudio[Current].textContent;
     arrayAudio[Current].className += " play";
-    arrayVideos[Current].className += " play";
+    videos[0].className += " play";
+
     audio.src = arrayAudio[Current].name;
     audio.play();
+
+    audio.onended = function() {
+      videos[0].pause();
+      videos[0].currentTime = "0";
+    };
   });
 
   // function click "button next"
@@ -136,9 +142,14 @@ $(document).ready(function() {
     document.getElementById("text-audio").innerHTML =
       arrayAudio[Current].textContent;
     arrayAudio[Current].className += " play";
-    arrayVideos[Current].className += " play";
+    videos[0].className += " play";
     audio.src = arrayAudio[Current].name;
     audio.play();
+
+    audio.onended = function() {
+      videos[0].pause();
+      videos[0].currentTime = "0";
+    };
   });
 
   //iterate over all the elements from the "arraybutton"
@@ -148,14 +159,16 @@ $(document).ready(function() {
       let target = event.target;
       if (target) {
         let dataButton = $(".audio.play")[0].dataset.audio;
-        arrayVideos.forEach(function(elem) {
-          if (elem.classList.contains("play")) {
-            elem.play();
-          } else {
-            elem.pause();
-            elem.currentTime = "0";
-          }
-        });
+        // arrayVideos.forEach(function(elem) {
+        if (videos[0].className != "play") {
+          videos[0].currentTime = "0";
+          videos[0].classList.add("play");
+          videos[0].play();
+        } else {
+          videos[0].pause();
+          videos[0].currentTime = "0";
+        }
+        // });
         switchFunction(dataButton);
       }
     });
@@ -169,16 +182,16 @@ $(document).ready(function() {
       if (target.classList.contains("play")) {
         // find out which element the class belongs to "play" and say what attribute it has
         let dataAudio = target.getAttribute("data-audio");
-        arrayVideos.forEach(function(elem) {
-          let dataVideo = elem.getAttribute("data-video");
-          if (dataAudio == dataVideo) {
-            elem.classList.add("play");
-            elem.play();
-          } else {
-            elem.pause();
-            elem.currentTime = "0";
-          }
-        });
+        // arrayVideos.forEach(function(elem) {
+        if (videos[0].className != "play") {
+          videos[0].currentTime = "0";
+          videos[0].classList.add("play");
+          videos[0].play();
+        } else {
+          videos[0].pause();
+          videos[0].currentTime = "0";
+        }
+        // });
         switchFunction(dataAudio);
         console.log(dataAudio);
       } else {
@@ -301,8 +314,6 @@ $(document).ready(function() {
 
     console.log("end");
   });
-  
-  console.log(settingswitchVertical);
 
   function individualSetting(objects, arrays, classes, newArray) {
     let obj = Object.values(objects);
@@ -341,35 +352,57 @@ $(document).ready(function() {
     newArray[randomFunction(0, quantity)] = `${classes}`;
   }
 
+  // setTimeout(() => {
+  //   readyFirstSong();
+  // }, 3000);
+
+  // function loopTime() {
+  //   $(".overlapping")[0].style.opacity = "1";
+  //   $(".overlapping").fadeIn(500);
+  //   setTimeout(() => {
+  //     $(".overlapping").fadeOut(500);
+  //     $(".overlapping")[0].style.opacity = "0";
+  //   }, 3000);
+  // }
+  // clearInterval(myTimer);
+  // myTimer = setInterval(loopTime, 11000);
+  console.log(settingRoundButns);
+  console.log(settingActPanels);
+  console.log(settingbuttonEffects);
+  console.log(settingchangeButtonFilters);
+  console.log(settingsliders);
+  console.log(settingswitchVertical);
+  console.log(settingswitchs);
+
   // function switch, which sets the properties for each audio
   function switchFunction(dateElement) {
     switch (dateElement) {
       case "1": // if the audion and video has a date attribute of "1"
-        changeRoundButn(settingRoundButns[1]);
-        changeActPanel(settingActPanels[1][0]);
-        randombuttonEffects(settingbuttonEffects[1][0]);
-        changeSliders(settingsliders[1]);
-        changeButtonFilter(settingchangeButtonFilters[1][0]);
-        changeSwitch(settingswitchs[1][0]);
-        changeSwitchVertical(settingswitchVertical[1][0]);
+        changeRoundButn(settingRoundButns[dateElement]);
+        changeActPanel(settingActPanels[dateElement][0]);
+        randombuttonEffects(settingbuttonEffects[dateElement][0]);
+        changeSliders(settingsliders[dateElement]);
+        changeButtonFilter(settingchangeButtonFilters[dateElement][0]);
+        changeSwitch(settingswitchs[dateElement][0]);
+        changeSwitchVertical(settingswitchVertical[dateElement][0]);
         break;
       case "2": // if the audion and video has a date attribute of "2"
-        changeRoundButn(settingRoundButns[2]);
-        changeActPanel(settingActPanels[2][0]);
-        randombuttonEffects(settingbuttonEffects[2][0]);
-        changeSliders(settingsliders[2]);
-        changeButtonFilter(settingchangeButtonFilters[2][0]);
-        changeSwitch(settingswitchs[2][0]);
-        changeSwitchVertical(settingswitchVertical[2][0]);
+        changeRoundButn(settingRoundButns[dateElement]);
+        changeActPanel(settingActPanels[dateElement][0]);
+        randombuttonEffects(settingbuttonEffects[dateElement][0]);
+        changeSliders(settingsliders[dateElement]);
+        changeButtonFilter(settingchangeButtonFilters[dateElement][0]);
+        changeSwitch(settingswitchs[dateElement][0]);
+        changeSwitchVertical(settingswitchVertical[dateElement][0]);
         break;
       case "3": // if the audion and video has a date attribute of "3"
-        changeRoundButn(settingRoundButns[3]);
-        changeActPanel(settingActPanels[3][0]);
-        randombuttonEffects(settingbuttonEffects[3][0]);
-        changeSliders(settingsliders[3]);
-        changeButtonFilter(settingchangeButtonFilters[3][0]);
-        changeSwitch(settingswitchs[3][0]);
-        changeSwitchVertical(settingswitchVertical[3][0]);
+        changeRoundButn(settingRoundButns[dateElement]);
+        changeActPanel(settingActPanels[dateElement][0]);
+        randombuttonEffects(settingbuttonEffects[dateElement][0]);
+        changeSliders(settingsliders[dateElement]);
+        changeButtonFilter(settingchangeButtonFilters[dateElement][0]);
+        changeSwitch(settingswitchs[dateElement][0]);
+        changeSwitchVertical(settingswitchVertical[dateElement][0]);
         break;
       default:
         console.log("Error");
@@ -487,16 +520,8 @@ $(document).ready(function() {
         actPanels[i].classList.remove("active");
       }
     }
-    // let obj = Object.values(objectActPanels);
-    // let className = "active";
-    // mainchange(obj, className);
-
     // mainСycle(actPanels, arguments);
   }
-  // let obj = Object.values(objectActPanels);
-  // let className = "active";
-  // mainchange(obj, className);
-
   // function mainchange(object, classes) {
   //   let array = [];
   //   for (let i = 0; i < object.length; i++) {
@@ -515,38 +540,83 @@ $(document).ready(function() {
   //   });
   // }
 
-  function mainСycle(elem, properties) {
-    for (let i = 0; i < elem.length; i++) {
-      if (elem[i].classList.contains("round-butn")) {
-        let rand = randomFunction(-150, 150); //random element "round-butn" MIN and MAX
-        let addtoarray = `rotate(${rand}deg)`; //roundButns[i].style.transform =
-        properties.push(addtoarray);
-        elem[i].style.transform = properties[i];
-      } else if (
-        elem[i].classList.contains("act-panel") ||
-        elem[i].classList.contains("switch") ||
-        elem[i].classList.contains("switch-vertical")
-      ) {
-        if (properties[i] != "") {
-          elem[i].classList.add(properties[i]);
-        } else {
-          elem[i].classList.remove("active");
-        }
-      } else if (
-        elem[i].classList.contains("button-effects") ||
-        elem[i].classList.contains("filters")
-      ) {
-        if (properties[i] != "") {
-          elem[i].classList.add(properties[i]);
-          // randombuttonEffects();
-        } else {
-          elem[i].classList.remove("on");
-        }
-      } else if (elem[i].classList.contains("slider")) {
-        elem[i].style.top = properties[i];
-      } else {
-        console.log("error");
-      }
-    }
-  }
+  // function readyFirstSong() {
+  //   // audio = new Audio();
+
+  //   let firstSong = $(".audio")[1];
+  //   event = document.createEvent("HTMLEvents");
+  //   console.log(event);
+  //   event.initEvent("click", true, true);
+  //   audio.autoplay = true;
+  //   // firstSong.classList.remove("play");
+  //   audio.src = firstSong.name;
+  //   audio.play();
+  //   let textAudioName = document.getElementById("text-audio");
+  //   textAudioName.textContent = firstSong.childNodes[0].textContent;
+  //   Current = firstSong.dataset.audio;
+  //   switchFunction("1");
+
+  //   firstSong.classList.add("play");
+  //   videos[0].classList.add("play");
+  //   videos[0].play();
+
+  //   firstSong.dispatchEvent(event);
+  //   firstSong.addEventListener(
+  //     "click",
+  //     function() {
+  //       audio.play();
+  //       videos[0].play();
+  //     },
+  //     false
+  //   );
+
+  //   if (firstSong !== undefined) {
+  //     firstSong
+  //       .catch(error => {
+  //         firstSong.classList.remove("play");
+  //       })
+  //       .then(() => {
+  //         audio.play();
+  //       });
+  //   }
+  //   audio.onended = function() {
+  //     videos[0].pause();
+  //     videos[0].currentTime = "0";
+  //   };
+  // }
+
+  // function mainСycle(elem, properties) {
+  //   for (let i = 0; i < elem.length; i++) {
+  //     if (elem[i].classList.contains("round-butn")) {
+  //       let rand = randomFunction(-150, 150); //random element "round-butn" MIN and MAX
+  //       let addtoarray = `rotate(${rand}deg)`; //roundButns[i].style.transform =
+  //       properties.push(addtoarray);
+  //       elem[i].style.transform = properties[i];
+  //     } else if (
+  //       elem[i].classList.contains("act-panel") ||
+  //       elem[i].classList.contains("switch") ||
+  //       elem[i].classList.contains("switch-vertical")
+  //     ) {
+  //       if (properties[i] != "") {
+  //         elem[i].classList.add(properties[i]);
+  //       } else {
+  //         elem[i].classList.remove("active");
+  //       }
+  //     } else if (
+  //       elem[i].classList.contains("button-effects") ||
+  //       elem[i].classList.contains("filters")
+  //     ) {
+  //       if (properties[i] != "") {
+  //         elem[i].classList.add(properties[i]);
+  //         // randombuttonEffects();
+  //       } else {
+  //         elem[i].classList.remove("on");
+  //       }
+  //     } else if (elem[i].classList.contains("slider")) {
+  //       elem[i].style.top = properties[i];
+  //     } else {
+  //       console.log("error");
+  //     }
+  //   }
+  // }
 });
