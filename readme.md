@@ -4,7 +4,7 @@
 
 See [Atom - APP](https://feniks212.github.io/atom-player_app/app/)
 
-
+## To view the operation of the application. Choose a track
 
 ### Installation
 
