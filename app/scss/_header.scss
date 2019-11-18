@@ -70,6 +70,9 @@
       left: -26px;
       width: calc(100% + 52px);
       height: fit-content;
+      max-height: 275px;
+      overflow: hidden;
+      overflow-y: scroll;
       background-color: #000000;
       padding: 2px 2px 4px;
       z-index: 11;
@@ -129,21 +132,31 @@
       justify-content: flex-end;
     }
     @media (max-width: 650px) {
-      display: none;
+      width: 50px;
     }
-
-    .save {
+    .plays {
       width: 26px;
       margin-right: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
-      @media (max-width: 960px) {
-        display: none;
+      z-index: 11;
+      @media (max-width: 650px) {
+        margin-right: 0;
       }
-      .save__a {
+      .plays__a {
+        outline: none;
         &::before {
-          background-image: url(./img/save.svg);
+          width: 8px;
+          height: 8px;
+          background-image: url(./img/play.svg);
+          background-size: cover;
+          opacity: .8;
+        }
+        &.playing {
+          &::before {
+            background-image: url(./img/pause.svg);
+          }
         }
       }
     }
@@ -194,6 +207,9 @@
       max-width: 26px;
       min-width: 26px;
       flex: inherit;
+      @media (max-width: 650px) {
+        display: none;
+      }
       img {
         max-width: 26px;
       }
